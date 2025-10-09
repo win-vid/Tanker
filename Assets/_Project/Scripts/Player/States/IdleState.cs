@@ -1,23 +1,33 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class IdleState : BaseState
 {
-    public override void onEnter(StateMachine player)
+    public override void onEnter(PlayerStateMachine player)
     {
 
     }
 
-    public override void onExit(StateMachine player)
+    public override void onExit(PlayerStateMachine player)
     {
 
     }
 
-    public override void onFixedUpdate(StateMachine player)
+    public override void onFixedUpdate(PlayerStateMachine player)
     {
-
+        checkInput(player);
     }
 
-    public override void onUpdate(StateMachine player)
+    // Check for input to switch to MovementState (WASD or Arrow Keys)
+    void checkInput(PlayerStateMachine player)
+    {
+        if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
+        {
+            player.SwitchState(player.movementState);
+        }
+    }
+
+    public override void onUpdate(PlayerStateMachine player)
     {
 
     }

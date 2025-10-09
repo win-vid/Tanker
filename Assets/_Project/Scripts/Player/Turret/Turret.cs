@@ -9,6 +9,7 @@ using UnityEngine.InputSystem;
 public class Turret : MonoBehaviour
 {
     public GameObject turret;
+    [SerializeField] GameObject projectilePrefab;
     [Range(0f, 10f)] public float rotationSpeed = 20f;
     public float shootingSpeed = 1.5f;
     float coolDown = 0f;
@@ -70,7 +71,7 @@ public class Turret : MonoBehaviour
 
     void Shoot()
     {
-        // Shoot Logic Here ...
+        GameObject projectile = Instantiate(projectilePrefab, turret.transform.position, turret.transform.rotation);
         Debug.Log("Pew Pew");
     }
 }
