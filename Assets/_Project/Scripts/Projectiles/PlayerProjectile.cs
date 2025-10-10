@@ -10,10 +10,7 @@ public class PlayerProjectile : Projectile
 
         // Decrease lifetime
         lifeTime -= Time.fixedDeltaTime;
-        if (lifeTime <= 0)
-        {
-            onImpact();
-        }
+        
     }
 }
 

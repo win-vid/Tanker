@@ -10,6 +10,10 @@ public class Projectile : MonoBehaviour
     void FixedUpdate()
     {
         // Move the projectile
+        if (lifeTime <= 0)
+        {
+            onImpact();
+        }
     }
 
     // on collision with obstacle destroy the projectile
