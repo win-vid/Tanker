@@ -1,20 +1,35 @@
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+/* 
+* Base class for all projectiles in the game.
+* Handles movement, lifetime, and collision with obstacles.
+* Inherit from this class to create specific projectile types (e.g., PlayerProjectile, EnemyProjectile).
+* Each subclass must implement the Move() and onSpawn() methods.
+*/
+
+public abstract class Projectile : MonoBehaviour
 {
     public float speed;
     public float lifeTime;
     public int damage;
     public bool hurtPlayer;
 
+    void Awake()
+    {
+        onSpawn();
+    }
+
     void FixedUpdate()
     {
-        // Move the projectile
+        Move();     // Move the projectile
         if (lifeTime <= 0)
         {
             onImpact();
         }
     }
+
+    public abstract void onSpawn();
+    public abstract void Move();
 
     // on collision with obstacle destroy the projectile
     void OnTriggerEnter(Collider other)
