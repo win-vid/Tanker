@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 // This is the heart of the player controller. It manages the different states the player can be in.
