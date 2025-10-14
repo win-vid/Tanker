@@ -5,11 +5,16 @@ public abstract class AIStateMachine : MonoBehaviour
     public BaseAIState currentState;
 
     // Variables
-    public float health;
-    public float speed;
-    public float rotationSpeed;
-    public float acceleration;
-    public float deceleration;
+    public float health;            // hp
+    public float speed;             // movement speed
+    public float rotationSpeed;     // rotation speed
+    public float acceleration;      // acceleration
+    public float deceleration;      // deceleration
+    public float shootSpeed;        // time between shots
+    public float aimBias;           // aim randomness
+    public GameObject projectilePrefab;
+
+    public PlayerStateMachine player;
 
     public void SwitchState(BaseAIState newState)
     {

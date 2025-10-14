@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class JagdPanzerManager : AIStateMachine
 {
-    Wander wanderState = new Wander();
+    public Wander wanderState = new Wander();
+    public Shoot shootState = new Shoot();
 
     void Awake()
     {
