@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using UnityEngine;
 
 /* 
@@ -9,29 +10,37 @@ using UnityEngine;
 
 public abstract class Projectile : MonoBehaviour
 {
-    public float speed;
-    public float lifeTime;
+    [SerializeField] protected float speed;
+    [SerializeField] protected float lifeTime;
     [HideInInspector] public float currentLifeTime;
-    public int damage;
+    [SerializeField] public int damage;
     public bool hurtPlayer;
+    protected Material projectileMaterial;
 
     void Awake()
     {
         currentLifeTime = lifeTime;
+        this.projectileMaterial = GetComponent<Renderer>().material;
         onSpawn();
     }
 
     void FixedUpdate()
     {
         Move();     // Move the projectile
+        currentLifeTime -= Time.fixedDeltaTime; // decrease lifetime
         if (currentLifeTime <= 0)
         {
             onImpact();
         }
+
+        
     }
 
-    public abstract void onSpawn();
-    public abstract void Move();
+    // called when the projectile is spawned
+    protected abstract void onSpawn();
+
+    // called every fixed update
+    protected abstract void Move();
 
     // on collision with obstacle destroy the projectile
     void OnTriggerEnter(Collider other)
@@ -42,7 +51,19 @@ public abstract class Projectile : MonoBehaviour
         }
     }
 
-    public void onImpact()
+    // sets the color of the projectile material to a given color
+    protected void setMaterialColor(Color color)
+    {
+        if (this.projectileMaterial != null)
+        {
+            this.projectileMaterial.color = color;
+            this.projectileMaterial.SetColor("_EmissionColor", color);
+
+        }
+    }
+
+    // handles what happens on impact (currently just deactivates the projectile for object pooling)
+    protected void onImpact()
     {
         gameObject.SetActive(false);
         currentLifeTime = lifeTime; // reset lifetime for object pooling
