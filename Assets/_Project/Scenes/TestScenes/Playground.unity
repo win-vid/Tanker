@@ -514,6 +514,32 @@ Transform:
   - {fileID: 509327296}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1171000002 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1297319335550838713, guid: 4caea8c6b8d19f549ab7923bf66a01ca, type: 3}
+  m_PrefabInstance: {fileID: 5964941354935219462}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1171000004
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171000002}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.8111638, y: 2.0078478, z: 4.216545}
+  m_Center: {x: -0.054992735, y: 0.5039239, z: -0.06659794}
 --- !u!1 &1247107511
 GameObject:
   m_ObjectHideFlags: 0
@@ -1567,10 +1593,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jagdpanzer
       objectReference: {fileID: 0}
+    - target: {fileID: 3164491202943427574, guid: 4caea8c6b8d19f549ab7923bf66a01ca, type: 3}
+      propertyPath: m_Size.y
+      value: 2.4574697
+      objectReference: {fileID: 0}
+    - target: {fileID: 3164491202943427574, guid: 4caea8c6b8d19f549ab7923bf66a01ca, type: 3}
+      propertyPath: m_Size.z
+      value: 0.9999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 3164491202943427574, guid: 4caea8c6b8d19f549ab7923bf66a01ca, type: 3}
+      propertyPath: m_Center.y
+      value: 0.72873324
+      objectReference: {fileID: 0}
+    - target: {fileID: 3164491202943427574, guid: 4caea8c6b8d19f549ab7923bf66a01ca, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1297319335550838713, guid: 4caea8c6b8d19f549ab7923bf66a01ca, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1171000004}
   m_SourcePrefab: {fileID: 100100000, guid: 4caea8c6b8d19f549ab7923bf66a01ca, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

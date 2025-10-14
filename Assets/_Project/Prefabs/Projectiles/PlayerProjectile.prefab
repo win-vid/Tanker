@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3438337588745797844}
   m_Layer: 0
   m_Name: PlayerProjectile
-  m_TagString: Untagged
+  m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerProjectile
   speed: 40
   lifeTime: 1
+  currentLifeTime: 0
   damage: 0
   hurtPlayer: 0
 --- !u!54 &3438337588745797844

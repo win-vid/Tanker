@@ -21,6 +21,7 @@ public abstract class AIStateMachine : MonoBehaviour
     [Header("Steering")]
     [Range(0, 1)] public double seekWeight = 1.0; // weight for separation behavior
     public double flockingRadius = 5.0;    // radius for flocking behavior
+    [HideInInspector] public float flockingRadiusSqr;
 
     public void SwitchState(BaseAIState newState)
     {
@@ -34,11 +35,18 @@ public abstract class AIStateMachine : MonoBehaviour
         currentState.onEnter(this);
         turret = GetComponent<AITurret>();      // get turret if any is attached to the GameObject
         player = FindFirstObjectByType<PlayerStateMachine>();
+        flockingRadiusSqr = (float)(flockingRadius * flockingRadius); // precompute squared radius for performance
     }
 
     void Update()
     {
         currentState.onUpdate(this);
+
+        // check health
+        if (health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     void FixedUpdate()
@@ -50,8 +58,12 @@ public abstract class AIStateMachine : MonoBehaviour
     {
         // weight of distance between point and ai, returns a value between 0 and 1, where 1 is very close and 0 is far away
         float distance = Vector3.Distance(flee, this.transform.position);
-        float distanceWeight = 1f - Mathf.Clamp01(distance / 10f) + 0.01f; 
-        Debug.Log("Distance Weight: " + distanceWeight);
+        float distanceWeight = 1f - Mathf.Clamp01(distance / 10f) + 0.01f;
         return distanceWeight;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("PlayerProjectile")) health -= other.GetComponent<Projectile>().damage;
     }
 }

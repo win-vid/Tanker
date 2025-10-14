@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal.Internal;
 
 public class Wander : BaseAIState
 {
@@ -68,9 +69,14 @@ public class Wander : BaseAIState
         Vector3 seperation = Vector3.zero;
         foreach (AIStateMachine other in EnemyManager.instance.enemies)
         {
-            if(other != stateMachine && other != null && Vector3.Distance(other.transform.position, stateMachine.transform.position) < stateMachine.flockingRadius)
+            if (other == stateMachine || other == null) continue;
+            
+            Vector3 diff = stateMachine.transform.position - other.transform.position;
+            float distSqr = diff.sqrMagnitude;
+            
+            if (distSqr < stateMachine.flockingRadiusSqr)
             {
-                seperation += (stateMachine.transform.position - other.transform.position).normalized;
+                seperation += diff.normalized;
             }
         }
         return seperation.normalized;
