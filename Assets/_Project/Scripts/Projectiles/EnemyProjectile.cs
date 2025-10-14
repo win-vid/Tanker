@@ -11,7 +11,7 @@ public class EnemyProjectile : Projectile
         transform.Rotate(0, 0, 10);
 
         // Decrease lifetime
-        lifeTime -= Time.fixedDeltaTime;
+        currentLifeTime -= Time.fixedDeltaTime;
     }
 
     public override void onSpawn()

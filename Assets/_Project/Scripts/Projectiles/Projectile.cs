@@ -11,18 +11,20 @@ public abstract class Projectile : MonoBehaviour
 {
     public float speed;
     public float lifeTime;
+    [HideInInspector] public float currentLifeTime;
     public int damage;
     public bool hurtPlayer;
 
     void Awake()
     {
+        currentLifeTime = lifeTime;
         onSpawn();
     }
 
     void FixedUpdate()
     {
         Move();     // Move the projectile
-        if (lifeTime <= 0)
+        if (currentLifeTime <= 0)
         {
             onImpact();
         }
@@ -42,6 +44,7 @@ public abstract class Projectile : MonoBehaviour
 
     public void onImpact()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        currentLifeTime = lifeTime; // reset lifetime for object pooling
     }
 }
