@@ -32,10 +32,11 @@ public class Wander : BaseAIState
         Vector3 seek = pointOfInterest - stateMachine.transform.position;
 
         // combination of move towards point and flee from player
-        direction = (0.2f * seek.normalized + 0.1f * flee.normalized).normalized;
+        direction = ((float)stateMachine.seekWeight * seek.normalized + stateMachine.getDistanceWeight(stateMachine.player.transform.position) * flee.normalized + getSeperationVector(stateMachine)).normalized;
 
-        stateMachine.transform.position += direction * stateMachine.speed * Time.deltaTime;
+        stateMachine.transform.position += Vector3.Scale(direction, new Vector3(1,0,1)) * stateMachine.speed * Time.deltaTime;
 
+        // Look where you are going
         if (direction.sqrMagnitude > 0.001f) // prevent NaN rotation when direction is zero
         {
             Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
@@ -44,6 +45,8 @@ public class Wander : BaseAIState
                 targetRotation,
                 stateMachine.rotationSpeed * Time.deltaTime
             );
+
+            stateMachine.transform.rotation = Quaternion.Euler(0, stateMachine.transform.rotation.eulerAngles.y, 0); // lock x and z rotation
         }
 
         // TODO: this is a very ugly implementation, fix later
@@ -56,6 +59,20 @@ public class Wander : BaseAIState
         }
 
         // draw line to point of interest for debugging
-        Debug.DrawLine(stateMachine.transform.position, pointOfInterest, Color.green);
+        // Debug.DrawLine(stateMachine.transform.position, pointOfInterest, Color.green);
+    }
+
+    // TODO: This is a performance issue
+    Vector3 getSeperationVector(AIStateMachine stateMachine)
+    {
+        Vector3 seperation = Vector3.zero;
+        foreach (AIStateMachine other in EnemyManager.instance.enemies)
+        {
+            if(other != stateMachine && other != null && Vector3.Distance(other.transform.position, stateMachine.transform.position) < stateMachine.flockingRadius)
+            {
+                seperation += (stateMachine.transform.position - other.transform.position).normalized;
+            }
+        }
+        return seperation.normalized;
     }
 }

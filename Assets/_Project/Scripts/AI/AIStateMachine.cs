@@ -5,6 +5,7 @@ public abstract class AIStateMachine : MonoBehaviour
     public BaseAIState currentState;
 
     // Variables
+    [Header("Stats")]
     public float health;            // hp
     public float speed;             // movement speed
     public float rotationSpeed;     // rotation speed
@@ -12,9 +13,14 @@ public abstract class AIStateMachine : MonoBehaviour
     public float deceleration;      // deceleration
     public float shootSpeed;        // time between shots
     public float aimBias;           // aim randomness
-    public GameObject projectilePrefab;
+    [SerializeField] protected GameObject projectilePrefab;
+    [SerializeField] protected AITurret turret;     // reference to turret, if any
 
-    public PlayerStateMachine player;
+    [HideInInspector] public PlayerStateMachine player;
+
+    [Header("Steering")]
+    [Range(0, 1)] public double seekWeight = 1.0; // weight for separation behavior
+    public double flockingRadius = 5.0;    // radius for flocking behavior
 
     public void SwitchState(BaseAIState newState)
     {
@@ -26,6 +32,8 @@ public abstract class AIStateMachine : MonoBehaviour
     void Start()
     {
         currentState.onEnter(this);
+        turret = GetComponent<AITurret>();      // get turret if any is attached to the GameObject
+        player = FindFirstObjectByType<PlayerStateMachine>();
     }
 
     void Update()
@@ -36,5 +44,14 @@ public abstract class AIStateMachine : MonoBehaviour
     void FixedUpdate()
     {
         currentState.onFixedUpdate(this);
+    }
+
+    public float getDistanceWeight(Vector3 flee)
+    {
+        // weight of distance between point and ai, returns a value between 0 and 1, where 1 is very close and 0 is far away
+        float distance = Vector3.Distance(flee, this.transform.position);
+        float distanceWeight = 1f - Mathf.Clamp01(distance / 10f) + 0.01f; 
+        Debug.Log("Distance Weight: " + distanceWeight);
+        return distanceWeight;
     }
 }
