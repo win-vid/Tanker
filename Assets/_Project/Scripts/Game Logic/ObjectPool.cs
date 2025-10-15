@@ -13,6 +13,7 @@ public class ObjectPool : MonoBehaviour
     {
         EnemyBulletEasy,
         PlayerBullet,
+        EnemyDisk,
     }
 
     [System.Serializable]

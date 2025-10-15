@@ -4,19 +4,23 @@ public class AITurret : MonoBehaviour
 {
     PlayerStateMachine player;
     AIStateMachine ai;
+    [SerializeField]float shootSpeed;
     float currentShootTime;
     [SerializeField] ObjectPool.PoolType bullet;
+    [SerializeField] bool followPlayer;
 
     void Start()
     {
+
         player = FindFirstObjectByType<PlayerStateMachine>();
         ai = GetComponentInParent<AIStateMachine>();
+        currentShootTime = shootSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        RotateTurret();
+        if (followPlayer) RotateTurret();
         checkShoot();
     }
 
@@ -49,7 +53,22 @@ public class AITurret : MonoBehaviour
             currentShootTime -= Time.deltaTime;
             return;
         }
-        ai.shootProjectile(ai.projectilePrefab);
-        currentShootTime = ai.shootSpeed;
+        shootProjectile(bullet);
+        currentShootTime = shootSpeed;
+    }
+
+    
+    // Shoot projectile from object pool by type
+    public void shootProjectile(ObjectPool.PoolType type)
+    {
+        GameObject bullet = ObjectPool.instance.GetPooledObject(type);
+        if (bullet != null)
+        {
+
+                Quaternion randomJitter = Quaternion.Euler(0, Random.Range(-ai.aimBias, ai.aimBias), 0);
+                bullet.transform.position = transform.position + transform.forward * 2f + new Vector3(0, 1f, 0);
+                bullet.transform.rotation = transform.rotation * randomJitter;
+            bullet.SetActive(true);
+        }
     }
 }
