@@ -3,7 +3,6 @@ using UnityEngine.Rendering.Universal.Internal;
 
 public class Wander : BaseAIState
 {
-    float radius = 10f;
     Vector3 direction;
     Vector3 randomOffset;
 
@@ -11,7 +10,7 @@ public class Wander : BaseAIState
     {
         // Pick random point on a circle around the player
         float angle = Random.Range(0f, 2f * Mathf.PI);
-        randomOffset = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * radius;
+        randomOffset = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * stateMachine.wanderRadius;
     }
 
     public override void onExit(AIStateMachine stateMachine)
@@ -35,7 +34,8 @@ public class Wander : BaseAIState
         // combination of move towards point and flee from player
         direction = ((float)stateMachine.seekWeight * seek.normalized + stateMachine.getDistanceWeight(stateMachine.player.transform.position) * flee.normalized + getSeperationVector(stateMachine)).normalized;
 
-        stateMachine.transform.position += Vector3.Scale(direction, new Vector3(1,0,1)) * stateMachine.speed * Time.deltaTime;
+        // Move the AI into direction mutliplied with speed and deltaTime
+        stateMachine.transform.position += Vector3.Scale(direction, new Vector3(1, 0, 1)) * stateMachine.speed * Time.deltaTime;
 
         // Look where you are going
         if (direction.sqrMagnitude > 0.001f) // prevent NaN rotation when direction is zero
@@ -57,6 +57,7 @@ public class Wander : BaseAIState
             {
                 panzer.SwitchState(panzer.shootState);
             }
+            else stateMachine.SwitchState(stateMachine.wanderState); // pick new point
         }
 
         // draw line to point of interest for debugging
@@ -64,6 +65,7 @@ public class Wander : BaseAIState
     }
 
     // TODO: This is a performance issue
+    // checks the EnemyManager for other enemies and calculates a seperation vector
     Vector3 getSeperationVector(AIStateMachine stateMachine)
     {
         Vector3 seperation = Vector3.zero;

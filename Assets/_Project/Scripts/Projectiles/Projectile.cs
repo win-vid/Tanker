@@ -63,7 +63,7 @@ public abstract class Projectile : MonoBehaviour
     }
 
     // handles what happens on impact (currently just deactivates the projectile for object pooling)
-    protected void onImpact()
+    public void onImpact()
     {
         gameObject.SetActive(false);
         currentLifeTime = lifeTime; // reset lifetime for object pooling

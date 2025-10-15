@@ -1,38 +1,61 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 // code from https://learn.unity.com/tutorial/introduction-to-object-pooling
 public class ObjectPool : MonoBehaviour
 {
-    public static ObjectPool SharedInstance;
-    public List<GameObject> pooledObjects;
-    public GameObject objectToPool;
-    public int amountToPool;
+    public static ObjectPool instance;
+    public Dictionary<PoolType, List<GameObject>> poolDictionary;
+    public List<Pool> pools;
+
+    public enum PoolType
+    {
+        EnemyBulletEasy,
+        PlayerBullet,
+    }
+
+    [System.Serializable]
+    public class Pool
+    {
+        public PoolType type;
+        public GameObject prefab;
+        public int size;
+    }
 
     void Awake()
     {
-        SharedInstance = this;
+        poolDictionary = new Dictionary<PoolType, List<GameObject>>();
+        instance = this;
     }
 
+    // Initialize the pools
     void Start()
     {
-        pooledObjects = new List<GameObject>();
-        GameObject tmp;
-        for (int i = 0; i < amountToPool; i++)
+        foreach (Pool pool in pools)
         {
-            tmp = Instantiate(objectToPool);
-            tmp.SetActive(false);
-            pooledObjects.Add(tmp);
+            List<GameObject> pooledObjects = new List<GameObject>();
+            for (int i = 0; i < pool.size; i++)
+            {
+                GameObject obj = Instantiate(pool.prefab);
+                obj.SetActive(false);
+                pooledObjects.Add(obj);
+            }
+            poolDictionary.Add(pool.type, pooledObjects);
         }
     }
 
-    public GameObject GetPooledObject()
+    // Get a pooled object by tag
+    public GameObject GetPooledObject(PoolType type)
     {
-        for (int i = 0; i < amountToPool; i++)
+        if (poolDictionary.ContainsKey(type))
         {
-            if (!pooledObjects[i].activeInHierarchy)
+            foreach (GameObject obj in poolDictionary[type])
             {
-                return pooledObjects[i];
+                if (!obj.activeInHierarchy)
+                {
+                    return obj;
+                }
             }
         }
         return null;

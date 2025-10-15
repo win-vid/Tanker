@@ -128,7 +128,7 @@ MonoBehaviour:
   speed: 40
   lifeTime: 1
   currentLifeTime: 0
-  damage: 0
+  damage: 10
   hurtPlayer: 0
 --- !u!54 &3438337588745797844
 Rigidbody:

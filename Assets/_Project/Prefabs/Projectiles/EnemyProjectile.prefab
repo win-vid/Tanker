@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3785624121663185154}
   m_Layer: 0
   m_Name: EnemyProjectile
-  m_TagString: Untagged
+  m_TagString: EnemyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,7 +111,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.5, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8522404526385219324
 MonoBehaviour:
@@ -127,7 +127,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   speed: 5
   lifeTime: 10
-  damage: 0
+  currentLifeTime: 0
+  damage: 5
   hurtPlayer: 1
 --- !u!54 &3785624121663185154
 Rigidbody:

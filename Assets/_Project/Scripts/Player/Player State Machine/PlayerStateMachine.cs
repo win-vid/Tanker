@@ -56,4 +56,16 @@ public class PlayerStateMachine : MonoBehaviour
         currentState.onEnter(this);                 //führt vom neuen State onEnter aus 
 
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("EnemyProjectile"))
+        {
+            currentHealth -= other.GetComponent<Projectile>().damage;
+            other.GetComponent<Projectile>().onImpact();
+            Debug.Log("Player hit, health: " + currentHealth);
+
+            // TODO: later add dead state here
+        }      
+    }
 }

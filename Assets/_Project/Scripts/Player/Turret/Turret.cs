@@ -71,7 +71,12 @@ public class Turret : MonoBehaviour
 
     void Shoot()
     {
-        GameObject projectile = Instantiate(projectilePrefab, turret.transform.position, turret.transform.rotation);
-        Debug.Log("Pew Pew");
+        GameObject projectile = ObjectPool.instance.GetPooledObject(ObjectPool.PoolType.PlayerBullet);
+        if (projectile != null)
+        {
+            projectile.transform.position = turret.transform.position + turret.transform.forward * 2f;
+            projectile.transform.rotation = turret.transform.rotation;
+            projectile.SetActive(true);
+        }
     }
 }

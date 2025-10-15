@@ -13,14 +13,16 @@ public abstract class AIStateMachine : MonoBehaviour
     public float deceleration;      // deceleration
     public float shootSpeed;        // time between shots
     public float aimBias;           // aim randomness
-    [SerializeField] protected GameObject projectilePrefab;
+    [SerializeField] public ObjectPool.PoolType projectilePrefab;
     [SerializeField] protected AITurret turret;     // reference to turret, if any
 
     [HideInInspector] public PlayerStateMachine player;
+    [HideInInspector] public Wander wanderState = new Wander();
 
     [Header("Steering")]
     [Range(0, 1)] public double seekWeight = 1.0; // weight for separation behavior
     public double flockingRadius = 5.0;    // radius for flocking behavior
+    public float wanderRadius = 10f;      // radius for wandering behavior
     [HideInInspector] public float flockingRadiusSqr;
 
     public void SwitchState(BaseAIState newState)
@@ -33,20 +35,21 @@ public abstract class AIStateMachine : MonoBehaviour
     void Start()
     {
         currentState.onEnter(this);
-        turret = GetComponent<AITurret>();      // get turret if any is attached to the GameObject
+        turret = GetComponentInChildren<AITurret>();      // get turret if any is attached to the GameObject
         player = FindFirstObjectByType<PlayerStateMachine>();
         flockingRadiusSqr = (float)(flockingRadius * flockingRadius); // precompute squared radius for performance
     }
 
     void Update()
     {
-        currentState.onUpdate(this);
-
-        // check health
+                // check health
         if (health <= 0)
         {
             Destroy(this.gameObject);
         }
+        currentState.onUpdate(this);
+
+
     }
 
     void FixedUpdate()
@@ -64,6 +67,31 @@ public abstract class AIStateMachine : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PlayerProjectile")) health -= other.GetComponent<Projectile>().damage;
+        if (other.CompareTag("PlayerProjectile"))
+        {
+            health -= other.GetComponent<Projectile>().damage;
+            other.GetComponent<Projectile>().onImpact();
+        }
+    }
+
+    // Shoot projectile from object pool by type
+    public void shootProjectile(ObjectPool.PoolType type)
+    {
+        GameObject bullet = ObjectPool.instance.GetPooledObject(type);
+        if (bullet != null)
+        {
+            if(turret != null)  // if turret exists, shoot from turret position
+            {
+                Quaternion randomJitter = Quaternion.Euler(0, Random.Range(-aimBias, aimBias), 0);
+                bullet.transform.position = turret.transform.position + turret.transform.forward * 2f + new Vector3(0, 1f, 0);
+                bullet.transform.rotation = turret.transform.rotation * randomJitter;
+            }
+            else
+            {
+                bullet.transform.position = transform.position + transform.forward * 2f + new Vector3(0, 1f, 0);
+                bullet.transform.rotation = transform.rotation;
+            }
+            bullet.SetActive(true);
+        }
     }
 }

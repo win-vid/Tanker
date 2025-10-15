@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class Shoot : BaseAIState
 {
@@ -41,7 +42,7 @@ public class Shoot : BaseAIState
         {
             {
                 // Fire projectile logic here
-                shootProjectile(stateMachine);
+                stateMachine.shootProjectile(stateMachine.projectilePrefab);
                 if (stateMachine is JagdPanzerManager panzer)
                 {
                     panzer.SwitchState(panzer.wanderState);
@@ -52,13 +53,5 @@ public class Shoot : BaseAIState
     }
     
     // calls the Projectile from the object pool
-    void shootProjectile(AIStateMachine stateMachine)
-    {
-        GameObject bullet = ObjectPool.SharedInstance.GetPooledObject(); 
-        if (bullet != null) {
-            bullet.transform.position = stateMachine.transform.position + stateMachine.transform.forward * 2f + new Vector3(0, 1f, 0);
-            bullet.transform.rotation = stateMachine.transform.rotation;
-            bullet.SetActive(true);
-        }
-    }
+
 }
