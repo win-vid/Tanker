@@ -130,6 +130,7 @@ MonoBehaviour:
   currentLifeTime: 0
   damage: 10
   hurtPlayer: 0
+  projectileColor: {r: 0.8113208, g: 0.7625564, b: 0, a: 0}
 --- !u!54 &3438337588745797844
 Rigidbody:
   m_ObjectHideFlags: 0

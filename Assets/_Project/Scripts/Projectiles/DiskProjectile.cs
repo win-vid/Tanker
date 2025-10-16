@@ -20,7 +20,7 @@ public class DiskProjectile : Projectile
 
     protected override void onSpawn()
     {
-        setMaterialColor(Color.black);
+        
     }
 
     void spawnProjectiles()
@@ -33,10 +33,10 @@ public class DiskProjectile : Projectile
             {
                 projectile.transform.position = transform.position;
                 projectile.transform.rotation = Quaternion.Euler(
-0f,
-baseYRotation + (i * 90f),
-0f
-);
+                0f,
+                baseYRotation + (i * 90f),
+                0f
+                );
                 projectile.SetActive(true);
             }
         }

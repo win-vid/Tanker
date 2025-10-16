@@ -16,11 +16,13 @@ public abstract class Projectile : MonoBehaviour
     [SerializeField] public int damage;
     public bool hurtPlayer;
     protected Material projectileMaterial;
+    [SerializeField] protected Color projectileColor;
 
     void Awake()
     {
         currentLifeTime = lifeTime;
         this.projectileMaterial = GetComponent<Renderer>().material;
+        setMaterialColor(projectileColor);
         onSpawn();
     }
 
