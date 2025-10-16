@@ -25,20 +25,30 @@ public class DiskProjectile : Projectile
 
     void spawnProjectiles()
     {
-         float baseYRotation = transform.rotation.eulerAngles.y;
-            for(int i = 0; i <= 3; i++)
+        float baseYRotation = transform.rotation.eulerAngles.y;
+        for (int i = 0; i <= 3; i++)
+        {
+            GameObject projectile = ObjectPool.instance.GetPooledObject(ObjectPool.PoolType.EnemyBulletEasy);
+            if (projectile != null)
             {
-                GameObject projectile = ObjectPool.instance.GetPooledObject(ObjectPool.PoolType.EnemyBulletEasy);
-                if (projectile != null)
-                {
-                    projectile.transform.position = transform.position;
-                                    projectile.transform.rotation = Quaternion.Euler(
-                    0f,
-                    baseYRotation + (i * 90f),
-                    0f
-                );
-                    projectile.SetActive(true);
-                }
+                projectile.transform.position = transform.position;
+                projectile.transform.rotation = Quaternion.Euler(
+0f,
+baseYRotation + (i * 90f),
+0f
+);
+                projectile.SetActive(true);
             }
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("PlayerProjectile") || other.CompareTag("Obstacle"))
+        {
+            other.gameObject.SetActive(false);
+            spawnProjectiles();
+            onImpact();
+        }
     }
 }

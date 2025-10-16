@@ -7,6 +7,7 @@ public abstract class AIStateMachine : MonoBehaviour
     // Variables
     [Header("Stats")]
     public float health;            // hp
+    float currentHealth;
     public float speed;             // movement speed
     public float rotationSpeed;     // rotation speed
     public float acceleration;      // acceleration
@@ -38,15 +39,12 @@ public abstract class AIStateMachine : MonoBehaviour
         turret = GetComponentInChildren<AITurret>();      // get turret if any is attached to the GameObject
         player = FindFirstObjectByType<PlayerStateMachine>();
         flockingRadiusSqr = (float)(flockingRadius * flockingRadius); // precompute squared radius for performance
+        currentHealth = health;
     }
 
     void Update()
     {
-                // check health
-        if (health <= 0)
-        {
-            Destroy(this.gameObject);
-        }
+        checkHealth();
         currentState.onUpdate(this);
 
 
@@ -69,7 +67,7 @@ public abstract class AIStateMachine : MonoBehaviour
     {
         if (other.CompareTag("PlayerProjectile"))
         {
-            health -= other.GetComponent<Projectile>().damage;
+            currentHealth -= other.GetComponent<Projectile>().damage;
             other.GetComponent<Projectile>().onImpact();
         }
     }
@@ -80,7 +78,7 @@ public abstract class AIStateMachine : MonoBehaviour
         GameObject bullet = ObjectPool.instance.GetPooledObject(type);
         if (bullet != null)
         {
-            if(turret != null)  // if turret exists, shoot from turret position
+            if (turret != null)  // if turret exists, shoot from turret position
             {
                 Quaternion randomJitter = Quaternion.Euler(0, Random.Range(-aimBias, aimBias), 0);
                 bullet.transform.position = turret.transform.position + turret.transform.forward * 2f + new Vector3(0, 1f, 0);
@@ -93,5 +91,24 @@ public abstract class AIStateMachine : MonoBehaviour
             }
             bullet.SetActive(true);
         }
+    }
+
+    void checkHealth()
+    {
+        // check health
+        if (currentHealth <= 0 && this.gameObject.activeSelf)
+        {
+            this.gameObject.SetActive(false);
+
+            if (WaveManager.instance != null) WaveManager.instance.enemiesSpawned--;
+            else Debug.LogWarning(this.name + " WaveManager instance not found!");
+            
+            currentHealth = health;
+        }
+    }
+    
+    public void setCurrentHealth(float health)
+    {
+        currentHealth = health;
     }
 }

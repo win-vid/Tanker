@@ -14,6 +14,9 @@ public class ObjectPool : MonoBehaviour
         EnemyBulletEasy,
         PlayerBullet,
         EnemyDisk,
+        T1000,
+        T2000,
+        T3000,
     }
 
     [System.Serializable]
@@ -59,6 +62,7 @@ public class ObjectPool : MonoBehaviour
                 }
             }
         }
+        Debug.LogWarning("No inactive objects of type " + type + " available in pool.");
         return null;
     }
 }

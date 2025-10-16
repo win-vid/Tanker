@@ -15,7 +15,7 @@ public class Motor : MonoBehaviour
     {
         if (other.CompareTag("PlayerProjectile"))
         {
-            ai.health -= 100;
+            ai.setCurrentHealth(-100);
             other.gameObject.SetActive(false);
         }
     }
