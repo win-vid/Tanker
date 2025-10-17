@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 // This is the heart of the player controller. It manages the different states the player can be in.
@@ -5,15 +6,19 @@ using UnityEngine;
 
 public class PlayerStateMachine : MonoBehaviour
 {
+    public static PlayerStateMachine instance;
+
     // Variables
     public float speed = 10f;
     public float reverseSpeed = 5f;
     public float rotationSpeed = 100f;
     public float acceleration = 5f;
     public float deceleration = 6f;
+    List<Powerup.Effect> activeEffects = new List<Powerup.Effect>();
 
     // Health
     public int maxHealth = 100;
+    bool invincible = false;
 
     // Current State
     public float currentSpeed = 0f;
@@ -24,6 +29,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     // References
     public Turret turret;
+    [SerializeField] GameObject shield;
 
     // States
     BaseState currentState;
@@ -33,9 +39,11 @@ public class PlayerStateMachine : MonoBehaviour
 
     void Start()
     {
+        instance = this;
         currentHealth = maxHealth;
         currentState = idleState;
         currentState.onEnter(this);
+        shield.SetActive(false);
     }
 
     void Update()
@@ -59,13 +67,24 @@ public class PlayerStateMachine : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("EnemyProjectile"))
+        if (other.CompareTag("EnemyProjectile") && !invincible)
         {
             currentHealth -= other.GetComponent<Projectile>().damage;
             other.GetComponent<Projectile>().onImpact();
             Debug.Log("Player hit, health: " + currentHealth);
 
             // TODO: later add dead state here
-        }      
+        }
+    }
+
+    public void Heal(int amount)
+    {
+        this.currentHealth = Mathf.Min(this.currentHealth + amount, this.maxHealth);
+    }
+
+    public void setInvincible(bool value)
+    {
+        this.invincible = value;
+        shield.SetActive(value);
     }
 }
