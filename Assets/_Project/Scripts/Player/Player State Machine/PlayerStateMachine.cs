@@ -67,11 +67,15 @@ public class PlayerStateMachine : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("EnemyProjectile") && !invincible)
+        if (other.CompareTag("EnemyProjectile"))
         {
-            currentHealth -= other.GetComponent<Projectile>().damage;
+            if (!invincible)
+            {
+                currentHealth -= other.GetComponent<Projectile>().damage;
+                Debug.Log("Player hit, health: " + currentHealth);
+            }
             other.GetComponent<Projectile>().onImpact();
-            Debug.Log("Player hit, health: " + currentHealth);
+            
 
             // TODO: later add dead state here
         }

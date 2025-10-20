@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 7872481645140641643}
   - component: {fileID: 701287902933333809}
   m_Layer: 0
-  m_Name: Jagdpanzer
+  m_Name: T1000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
