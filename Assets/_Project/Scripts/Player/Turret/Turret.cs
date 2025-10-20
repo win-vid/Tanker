@@ -11,14 +11,15 @@ public class Turret : MonoBehaviour
     public GameObject turret;
     [SerializeField] GameObject projectilePrefab;
     [Range(0f, 10f)] public float rotationSpeed = 20f;
-    public float shootingSpeed = 1.5f;
+    public float initialShootingSpeed = 1.5f;
+    public float shootingSpeed;
     float coolDown = 0f;
     bool alive = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        shootingSpeed = initialShootingSpeed;
     }
 
     // Update is called once per frame
