@@ -69,6 +69,7 @@ public class AITurret : MonoBehaviour
                 bullet.transform.position = transform.position + transform.forward * 2f + new Vector3(0, 1f, 0);
                 bullet.transform.rotation = transform.rotation * randomJitter;
             bullet.SetActive(true);
+            bullet.GetComponent<Projectile>().onSpawn();
         }
     }
 }

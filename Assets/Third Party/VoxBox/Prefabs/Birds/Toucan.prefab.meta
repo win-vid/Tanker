@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 59f78f10871a425429db017ddfc9d0ed
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182002
+  packageName: Voxbox - Voxel Game Assets
+  packageVersion: 1.0
+  assetPath: Assets/VoxBox/Prefabs/Birds/Toucan.prefab
+  uploadId: 398045

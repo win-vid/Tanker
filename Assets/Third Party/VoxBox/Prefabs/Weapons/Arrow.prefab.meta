@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7045de76d2e27f04ca65eba563c03527
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182002
+  packageName: Voxbox - Voxel Game Assets
+  packageVersion: 1.0
+  assetPath: Assets/VoxBox/Prefabs/Weapons/Arrow.prefab
+  uploadId: 398045

@@ -18,7 +18,7 @@ public class DiskProjectile : Projectile
         }
     }
 
-    protected override void onSpawn()
+    public override void onSpawn()
     {
         
     }

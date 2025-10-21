@@ -29,6 +29,7 @@ public class Turret : MonoBehaviour
         {
             RotateTurret();
             ReceiveInput();
+            RenderLine();
             UpdateCoolDown();
         }
         else
@@ -79,5 +80,10 @@ public class Turret : MonoBehaviour
             projectile.transform.rotation = turret.transform.rotation;
             projectile.SetActive(true);
         }
+    }
+
+    void RenderLine()
+    {
+        Debug.DrawRay(turret.transform.position, turret.transform.forward * 100f, Color.red);
     }
 }

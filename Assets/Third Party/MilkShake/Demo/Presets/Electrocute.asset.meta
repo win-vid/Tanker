@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d370f110be4f2c0459246da0ea38a762
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 165604
+  packageName: MilkShake Camera Shaker
+  packageVersion: 1.0.0
+  assetPath: Assets/MilkShake/Demo/Presets/Electrocute.asset
+  uploadId: 360053

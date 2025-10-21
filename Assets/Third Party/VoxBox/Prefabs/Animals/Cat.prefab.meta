@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 852672785d05a474c8009254454cdcec
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182002
+  packageName: Voxbox - Voxel Game Assets
+  packageVersion: 1.0
+  assetPath: Assets/VoxBox/Prefabs/Animals/Cat.prefab
+  uploadId: 398045

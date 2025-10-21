@@ -39,7 +39,7 @@ public abstract class Projectile : MonoBehaviour
     }
 
     // called when the projectile is spawned
-    protected abstract void onSpawn();
+    public abstract void onSpawn();
 
     // called every fixed update
     protected abstract void Move();

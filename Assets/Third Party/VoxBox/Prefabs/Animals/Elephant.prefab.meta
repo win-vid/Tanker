@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 0ed47bebe78e39143b6fb2966a39e9a2
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182002
+  packageName: Voxbox - Voxel Game Assets
+  packageVersion: 1.0
+  assetPath: Assets/VoxBox/Prefabs/Animals/Elephant.prefab
+  uploadId: 398045

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4681852fa25049f429edac80ac05d903
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 165604
+  packageName: MilkShake Camera Shaker
+  packageVersion: 1.0.0
+  assetPath: Assets/MilkShake/Demo/Presets/Earthquake.asset
+  uploadId: 360053

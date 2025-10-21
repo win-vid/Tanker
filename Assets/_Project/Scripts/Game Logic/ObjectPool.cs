@@ -15,8 +15,11 @@ public class ObjectPool : MonoBehaviour
         PlayerBullet,
         EnemyDisk,
         T1000,
+        T1WRACK,
         T2000,
+        T2WRACK,
         T3000,
+        T3WRACK
     }
 
     [System.Serializable]

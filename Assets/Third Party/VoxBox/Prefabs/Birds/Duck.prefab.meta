@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 732460759345f5e4f825a4a71cf9bb16
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182002
+  packageName: Voxbox - Voxel Game Assets
+  packageVersion: 1.0
+  assetPath: Assets/VoxBox/Prefabs/Birds/Duck.prefab
+  uploadId: 398045

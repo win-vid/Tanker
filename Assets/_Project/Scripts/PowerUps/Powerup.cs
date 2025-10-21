@@ -13,6 +13,7 @@ public abstract class Powerup : MonoBehaviour
     protected PlayerStateMachine player;
     [SerializeField] protected GameObject symbolObject;  // The Object that represents the power-up visually
     [SerializeField] private float rotationSpeed = 50f;
+    Vector3 _initialScale;
 
     public enum EffectType
     {
@@ -55,10 +56,12 @@ public abstract class Powerup : MonoBehaviour
             Debug.LogError("Powerup: Missing references in " + gameObject.name);
         }
 
-        if(PowerupManager.instance == null)
+        if (PowerupManager.instance == null)
         {
             Debug.LogError("Powerup: No PowerupManager instance found in the scene.");
         }
+        
+        _initialScale = symbolObject.transform.localScale;
 
     }
 
@@ -90,7 +93,9 @@ public abstract class Powerup : MonoBehaviour
     
     protected void PulsePowerUp()
     {
-        float scale = 1 + 0.1f * Mathf.Sin(Time.time * 5f);
+        /*
+        float scale = _initialScale.x + 0.1f * Mathf.Sin(Time.time * 5f);
         symbolObject.transform.localScale = new Vector3(scale, scale, scale);
+        */
     }
 }

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 65b4e58398f9dd142b59d28c4f8e352f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 165604
+  packageName: MilkShake Camera Shaker
+  packageVersion: 1.0.0
+  assetPath: Assets/MilkShake/Demo/Scripts/CameraSwitcher.cs
+  uploadId: 360053

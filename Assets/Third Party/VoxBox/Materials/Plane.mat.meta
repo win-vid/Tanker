@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: fc41b426ba1dd724c94db87c8d90ccfe
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182002
+  packageName: Voxbox - Voxel Game Assets
+  packageVersion: 1.0
+  assetPath: Assets/VoxBox/Materials/Plane.mat
+  uploadId: 398045

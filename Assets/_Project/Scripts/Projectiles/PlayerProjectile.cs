@@ -8,7 +8,7 @@ public class PlayerProjectile : Projectile
         transform.position += transform.forward * speed * Time.fixedDeltaTime;
     }
 
-    protected override void onSpawn()
+    public override void onSpawn()
     {
     }
 }

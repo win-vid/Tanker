@@ -19,12 +19,16 @@ public abstract class AIStateMachine : MonoBehaviour
 
     [HideInInspector] public PlayerStateMachine player;
     [HideInInspector] public Wander wanderState = new Wander();
+    [HideInInspector] public DeadAIState deadState = new DeadAIState();
 
     [Header("Steering")]
     [Range(0, 1)] public double seekWeight = 1.0; // weight for separation behavior
     public double flockingRadius = 5.0;    // radius for flocking behavior
     public float wanderRadius = 10f;      // radius for wandering behavior
     [HideInInspector] public float flockingRadiusSqr;
+
+    [Header("Wrack Settings")]
+    public ObjectPool.PoolType wrackPrefab;
 
     public void SwitchState(BaseAIState newState)
     {
@@ -98,17 +102,29 @@ public abstract class AIStateMachine : MonoBehaviour
         // check health
         if (currentHealth <= 0 && this.gameObject.activeSelf)
         {
-            this.gameObject.SetActive(false);
-
+            currentHealth = health;
             if (WaveManager.instance != null) WaveManager.instance.enemiesSpawned--;
             else Debug.LogWarning(this.name + " WaveManager instance not found!");
+            this.gameObject.SetActive(false);
+            spawnWrack();
+
+
             
-            currentHealth = health;
+            
         }
     }
-    
+
     public void setCurrentHealth(float health)
     {
         currentHealth = health;
+    }
+    
+    public void spawnWrack()
+    {
+        GameObject wrackObject = ObjectPool.instance.GetPooledObject(wrackPrefab);
+        wrackObject.transform.position = this.transform.position;
+        wrackObject.transform.rotation = this.transform.rotation;
+        wrackObject.SetActive(true);
+        wrackObject.GetComponent<Wrack>().playParticleSystem();
     }
 }

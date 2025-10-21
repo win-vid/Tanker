@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ed22e00702a128848946e75261efb966
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 165604
+  packageName: MilkShake Camera Shaker
+  packageVersion: 1.0.0
+  assetPath: Assets/MilkShake/Demo/Presets/Offroad.asset
+  uploadId: 360053

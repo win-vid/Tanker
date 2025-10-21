@@ -14,7 +14,6 @@ public class PlayerStateMachine : MonoBehaviour
     public float rotationSpeed = 100f;
     public float acceleration = 5f;
     public float deceleration = 6f;
-    List<Powerup.Effect> activeEffects = new List<Powerup.Effect>();
 
     // Health
     public int maxHealth = 100;
@@ -67,15 +66,11 @@ public class PlayerStateMachine : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("EnemyProjectile"))
+        if (other.CompareTag("EnemyProjectile") && !invincible)
         {
-            if (!invincible)
-            {
-                currentHealth -= other.GetComponent<Projectile>().damage;
-                Debug.Log("Player hit, health: " + currentHealth);
-            }
+            currentHealth -= other.GetComponent<Projectile>().damage;
             other.GetComponent<Projectile>().onImpact();
-            
+            Debug.Log("Player hit, health: " + currentHealth);
 
             // TODO: later add dead state here
         }
