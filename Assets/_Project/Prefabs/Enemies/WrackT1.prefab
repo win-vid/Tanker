@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   ps: {fileID: 6524396756988337143}
   wrackPoolType: 4
+  turret: {fileID: 0}
 --- !u!1001 &7279303469922357816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63,7 +64,7 @@ PrefabInstance:
     - target: {fileID: 7026883705907209679, guid: f68b1642a9fdb644da85562da268df92, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 7075b8ab060a4e54699dd985a8e8a256, type: 2}
+      objectReference: {fileID: 2100000, guid: 331a2193d4be8a64d888e96b5b7ad50c, type: 2}
     - target: {fileID: 7174376862617930182, guid: f68b1642a9fdb644da85562da268df92, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -110,13 +111,33 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7174376862617930182, guid: f68b1642a9fdb644da85562da268df92, type: 3}
       insertIndex: -1
       addedObject: {fileID: 734576640703220257}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 659814066244154905, guid: f68b1642a9fdb644da85562da268df92, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4668101887997662551}
   m_SourcePrefab: {fileID: 100100000, guid: f68b1642a9fdb644da85562da268df92, type: 3}
 --- !u!4 &474503378326658046 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7174376862617930182, guid: f68b1642a9fdb644da85562da268df92, type: 3}
   m_PrefabInstance: {fileID: 7279303469922357816}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7794999324424037409 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 659814066244154905, guid: f68b1642a9fdb644da85562da268df92, type: 3}
+  m_PrefabInstance: {fileID: 7279303469922357816}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4668101887997662551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7794999324424037409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5e6afd3008622341b2cd43e20b5b9f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1001 &8542565918234073273
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -128,7 +149,7 @@ PrefabInstance:
     - target: {fileID: 3137956734495803709, guid: d79fd4d6c3794bc4c89ac1cfcc071929, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: 7075b8ab060a4e54699dd985a8e8a256, type: 2}
+      objectReference: {fileID: 2100000, guid: 331a2193d4be8a64d888e96b5b7ad50c, type: 2}
     - target: {fileID: 3577030873591383369, guid: d79fd4d6c3794bc4c89ac1cfcc071929, type: 3}
       propertyPath: m_Name
       value: Gun07
