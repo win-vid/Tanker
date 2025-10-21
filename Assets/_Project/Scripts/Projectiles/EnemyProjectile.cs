@@ -11,6 +11,7 @@ public class EnemyProjectile : Projectile
         transform.position += transform.forward * speed * Time.fixedDeltaTime;
         transform.Rotate(0, 0, 10);
 
+        /*
         // Scale up the projectile to its correct size shortly after spawning
         if (transform.localScale.x < _correctSize.x)
         {
@@ -20,14 +21,12 @@ public class EnemyProjectile : Projectile
                 transform.localScale = _correctSize;
             }
         }
-
+        */
         // Decrease lifetime
         currentLifeTime -= Time.fixedDeltaTime;
     }
 
     public override void onSpawn()
     {
-        _correctSize = transform.localScale;
-        transform.localScale = Vector3.zero;
     }
 }
