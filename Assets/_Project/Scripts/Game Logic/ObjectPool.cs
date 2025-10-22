@@ -19,7 +19,8 @@ public class ObjectPool : MonoBehaviour
         T2000,
         T2WRACK,
         T3000,
-        T3WRACK
+        T3WRACK,
+TVP,
     }
 
     [System.Serializable]

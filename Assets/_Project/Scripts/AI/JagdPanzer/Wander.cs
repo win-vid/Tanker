@@ -57,6 +57,10 @@ public class Wander : BaseAIState
             {
                 panzer.SwitchState(panzer.shootState);
             }
+            else if (stateMachine is TVP tvp)
+            {
+                tvp.SwitchState(tvp.flyAtPlayerState);
+            }
             else stateMachine.SwitchState(stateMachine.wanderState); // pick new point
         }
 
