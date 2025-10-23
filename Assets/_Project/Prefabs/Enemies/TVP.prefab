@@ -60,7 +60,9 @@ MonoBehaviour:
   flockingRadius: 5
   wanderRadius: 15
   flockingRadiusSqr: 0
-  wrackPrefab: 0
+  wrackPrefab: 10
+  explosionTimer: 2
+  explosionProjectileDegree: 20
 --- !u!65 &6145783281174080678
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -80,8 +82,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.2066226, y: 2.5972977, z: 1.424026}
-  m_Center: {x: -0.011388063, y: 0.79864883, z: 0.212013}
+  m_Size: {x: 1.7637687, y: 2.5972977, z: 2.0616765}
+  m_Center: {x: -0.03971982, y: 0.79864883, z: 0.10869813}
 --- !u!1 &4133160851326642133
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,10 +222,9 @@ GameObject:
   - component: {fileID: 732892438476975068}
   - component: {fileID: 8790217210262031715}
   - component: {fileID: 4053280065212193761}
-  - component: {fileID: 8013831249947532032}
   - component: {fileID: 3949845490458973347}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: Rotor (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -300,27 +301,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8013831249947532032
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4538860127284806898}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3949845490458973347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,10 +324,9 @@ GameObject:
   - component: {fileID: 6604627780527990558}
   - component: {fileID: 3076559309446339155}
   - component: {fileID: 6378966259403279581}
-  - component: {fileID: 4536795009723928649}
   - component: {fileID: 5807168940335501833}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Rotor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -424,27 +403,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4536795009723928649
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5168481255502689341}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5807168940335501833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,10 +426,9 @@ GameObject:
   - component: {fileID: 4073480850362395477}
   - component: {fileID: 1597944703947005655}
   - component: {fileID: 8552445991904892817}
-  - component: {fileID: 7077066825902173375}
   - component: {fileID: 3782700643346058224}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Rotor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -548,27 +505,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7077066825902173375
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6273947921541410505}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3782700643346058224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -592,10 +528,9 @@ GameObject:
   - component: {fileID: 1216311639326337562}
   - component: {fileID: 7205445556965496725}
   - component: {fileID: 5622699466331020415}
-  - component: {fileID: 4975983140083281286}
   - component: {fileID: 2356145571484571172}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: Rotor (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -672,27 +607,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4975983140083281286
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6844469760567858127}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2356145571484571172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -716,7 +630,6 @@ GameObject:
   - component: {fileID: 5655391543395077076}
   - component: {fileID: 7862553552910964300}
   - component: {fileID: 7904120445005722787}
-  - component: {fileID: 4385043857089819590}
   m_Layer: 0
   m_Name: eye
   m_TagString: Untagged
@@ -795,27 +708,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4385043857089819590
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8261508404763160492}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &4094232177194015547
 PrefabInstance:
   m_ObjectHideFlags: 0

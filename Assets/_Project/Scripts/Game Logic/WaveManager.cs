@@ -1,10 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+* Wave Manager
+* Manages enemy waves and spawning.
+* Randomly selects enemies to spawn based on wave points.
+*/
+
 public class WaveManager : MonoBehaviour
 {
-    public int currentWave = 0;
-    public int currentWavePoints;
+    int currentWave;
+    [SerializeField] int currentWavePoints;
     public int enemiesSpawned = 0;
     [SerializeField] int wavePointIncrement = 2;
 
@@ -12,6 +18,8 @@ public class WaveManager : MonoBehaviour
     [SerializeField] List<Enemy> enemies;
 
     [System.Serializable]
+
+    // Enemy class to hold type and cost
     public class Enemy
     {
         public ObjectPool.PoolType type;
@@ -51,19 +59,20 @@ public class WaveManager : MonoBehaviour
                 GameObject spawnedEnemy = ObjectPool.instance.GetPooledObject(enemy.type);
                 if (spawnedEnemy == null)
                 {
+                    // POSSIBLE ISSUE: No more enemies of this type available in pool
                     Debug.LogWarning("No more enemies of type " + enemy.type + " available in pool.");
                     break; // exit if no more enemies of this type are available
                 }
                 spawnedEnemy.transform.position = getRandomPosition();
                 spawnedEnemy.transform.rotation = Quaternion.identity;
-                spawnedEnemy.SetActive(true);
                 enemiesSpawned++;
+                spawnedEnemy.SetActive(true);
                 currentWavePoints -= enemy.cost;
             }
         }
         Debug.Log("Wave Points Left: " + currentWavePoints);
     }
-    
+
     // get a random position outside the camera view
     Vector3 getRandomPosition()
     {

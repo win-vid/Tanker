@@ -25,14 +25,16 @@ public class Wander : BaseAIState
 
     public override void onUpdate(AIStateMachine stateMachine)
     {
-        Vector3 pointOfInterest = stateMachine.player.transform.position + randomOffset;
+        Vector3 playerPos = stateMachine.player.transform.position;
+        Vector3 AIpos = stateMachine.transform.position;
+        Vector3 pointOfInterest = playerPos + randomOffset;
         // flee from player
-        Vector3 flee = stateMachine.transform.position - stateMachine.player.transform.position;
+        Vector3 flee = SteeringBehaviour.Flee(playerPos, AIpos);
         // move to point
-        Vector3 seek = pointOfInterest - stateMachine.transform.position;
+        Vector3 seek = SteeringBehaviour.Seek(pointOfInterest, AIpos);
 
         // combination of move towards point and flee from player
-        direction = ((float)stateMachine.seekWeight * seek.normalized + stateMachine.getDistanceWeight(stateMachine.player.transform.position) * flee.normalized + getSeperationVector(stateMachine)).normalized;
+        direction = ((float)stateMachine.seekWeight * seek.normalized + stateMachine.getDistanceWeight(playerPos) * flee.normalized + getSeperationVector(stateMachine)).normalized;
 
         // Move the AI into direction mutliplied with speed and deltaTime
         stateMachine.transform.position += Vector3.Scale(direction, new Vector3(1, 0, 1)) * stateMachine.speed * Time.deltaTime;

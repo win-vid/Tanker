@@ -6,7 +6,7 @@ public class AITurret : MonoBehaviour
     AIStateMachine ai;
     [SerializeField]float shootSpeed;
     float currentShootTime;
-    [SerializeField] ObjectPool.PoolType bullet;
+    [SerializeField] ObjectPool.PoolType projectile;
     [SerializeField] bool followPlayer;
 
     void Start()
@@ -53,7 +53,7 @@ public class AITurret : MonoBehaviour
             currentShootTime -= Time.deltaTime;
             return;
         }
-        shootProjectile(bullet);
+        shootProjectile(projectile);
         currentShootTime = shootSpeed;
     }
 
@@ -61,15 +61,29 @@ public class AITurret : MonoBehaviour
     // Shoot projectile from object pool by type
     public void shootProjectile(ObjectPool.PoolType type)
     {
-        GameObject bullet = ObjectPool.instance.GetPooledObject(type);
-        if (bullet != null)
+        GameObject projectile = ObjectPool.instance.GetPooledObject(type);
+        if (projectile != null)
         {
 
-                Quaternion randomJitter = Quaternion.Euler(0, Random.Range(-ai.aimBias, ai.aimBias), 0);
-                bullet.transform.position = transform.position + transform.forward * 2f + new Vector3(0, 1f, 0);
-                bullet.transform.rotation = transform.rotation * randomJitter;
-            bullet.SetActive(true);
-            bullet.GetComponent<Projectile>().onSpawn();
+            Quaternion randomJitter = Quaternion.Euler(0, Random.Range(-ai.aimBias, ai.aimBias), 0);
+            projectile.transform.position = transform.position + transform.forward * 2f + new Vector3(0, 1f, 0);
+            projectile.transform.rotation = transform.rotation * randomJitter;
+            projectile.SetActive(true);
+
+            // Check if Projectile is Bullet or AI
+            Projectile bullet = projectile.GetComponent<Projectile>();
+            if (bullet != null)
+            {
+                bullet.onSpawn();
+                return;
+            }
+
+            AIStateMachine stateMachine = projectile.GetComponent<AIStateMachine>();
+            if (stateMachine != null)
+            {
+                WaveManager.instance.enemiesSpawned++;
+                return;
+            }
         }
     }
 }

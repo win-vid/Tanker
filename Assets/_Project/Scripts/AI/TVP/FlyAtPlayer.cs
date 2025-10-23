@@ -17,7 +17,7 @@ public class FlyAtPlayer : BaseAIState
 
     public override void onExit(AIStateMachine stateMachine)
     {
-
+        if(stateMachine is TVP tvp) currentDetonateTime = tvp.explosionTimer;
     }
 
     public override void onFixedUpdate(AIStateMachine stateMachine)

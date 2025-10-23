@@ -4,7 +4,6 @@ public abstract class AIStateMachine : MonoBehaviour
 {
     public BaseAIState currentState;
 
-    // Variables
     [Header("Stats")]
     public float health;            // hp
     float currentHealth;
@@ -14,6 +13,9 @@ public abstract class AIStateMachine : MonoBehaviour
     public float deceleration;      // deceleration
     public float shootSpeed;        // time between shots
     public float aimBias;           // aim randomness
+    bool active = false;
+
+    [Header("References")]
     [SerializeField] public ObjectPool.PoolType projectilePrefab;
     [SerializeField] protected AITurret turret;     // reference to turret, if any
 
@@ -40,18 +42,18 @@ public abstract class AIStateMachine : MonoBehaviour
     void Start()
     {
         currentState.onEnter(this);
-        turret = GetComponentInChildren<AITurret>();      // get turret if any is attached to the GameObject
-        player = FindFirstObjectByType<PlayerStateMachine>();
-        flockingRadiusSqr = (float)(flockingRadius * flockingRadius); // precompute squared radius for performance
-        currentHealth = health;
+        turret = GetComponentInChildren<AITurret>();                    // get turret if any is attached to the GameObject
+        player = FindFirstObjectByType<PlayerStateMachine>();           // find player in scene
+        flockingRadiusSqr = (float)(flockingRadius * flockingRadius);   // precompute squared radius for performance
+        currentHealth = health;                                         // set current health to max health
+
+        if (WaveManager.instance == null) Debug.LogWarning(this.name + " WaveManager instance not found!");
     }
 
     void Update()
     {
         checkHealth();
         currentState.onUpdate(this);
-
-
     }
 
     void FixedUpdate()
@@ -97,20 +99,14 @@ public abstract class AIStateMachine : MonoBehaviour
         }
     }
 
+    // Checks current health and deactivates the AI if health is 0, spawns a wrack if applicable
     void checkHealth()
     {
-        // check health
         if (currentHealth <= 0 && this.gameObject.activeSelf)
         {
             currentHealth = health;
-            if (WaveManager.instance != null) WaveManager.instance.enemiesSpawned--;
-            else Debug.LogWarning(this.name + " WaveManager instance not found!");
-            this.gameObject.SetActive(false);
-            spawnWrack();
-
-
-            
-            
+            RemoveFromGame();
+            if (wrackPrefab != ObjectPool.PoolType.NONE) spawnWrack();
         }
     }
 
@@ -118,13 +114,22 @@ public abstract class AIStateMachine : MonoBehaviour
     {
         currentHealth = health;
     }
-    
+
+    // Spawns a wrack prefab from the object pool
     public void spawnWrack()
     {
+        if (wrackPrefab == ObjectPool.PoolType.NONE) return;
         GameObject wrackObject = ObjectPool.instance.GetPooledObject(wrackPrefab);
         wrackObject.transform.position = this.transform.position;
         wrackObject.transform.rotation = this.transform.rotation;
         wrackObject.SetActive(true);
         wrackObject.GetComponent<Wrack>().playParticleSystem();
+    }
+
+    protected void RemoveFromGame()
+    {
+        if (WaveManager.instance != null) WaveManager.instance.enemiesSpawned--;
+        else Debug.LogWarning(this.name + " WaveManager instance not found!");
+        this.gameObject.SetActive(false);
     }
 }
