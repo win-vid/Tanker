@@ -22,9 +22,13 @@ This project is part of my introduction to Game Engines course.
 
 <h2>Enemies</h2>
 The enemies are all based upon a small state machine which uses steering behavior to drive towards random points around the player.
+<h3>TVP</h3>
+A standard issue FPV drone. Very weak but fast. Flies towards a point, charges at the player, explodes.
 <h3>T1000</h3>
 Weakest enemy, can only shoot once and then has to drive towards the next point.
 <h3>T2000</h3>
 Constantly aims its turret at the player. Persistently shoots at the player.
 <h3>T3000</h3>
 Slow mini-boss, constantly aims its turret at the player and shoots disk projectiles which burst into multiple enemy projectiles after a short amount of time. Additionaly, possesses a small auto-canon at the front.
+<h3>T4000</h3>
+Slow mini-boss, has no weapons but can deploy TVP's.
