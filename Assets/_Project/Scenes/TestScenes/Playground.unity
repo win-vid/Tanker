@@ -1706,6 +1706,9 @@ MonoBehaviour:
     cost: 3
   - type: 11
     cost: 12
+  - type: 13
+    cost: 100
+  bossWaveInterval: 10
 --- !u!1001 &408654925
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1972,6 +1975,15 @@ MonoBehaviour:
     size: 20
   - type: 11
     prefab: {fileID: 5896864537985418278, guid: f6a4b86b59ba81a4da85447ea315978c, type: 3}
+    size: 20
+  - type: 12
+    prefab: {fileID: 225696326685211155, guid: ae9b9134b2ff1ee42a4d392169ee1ef3, type: 3}
+    size: 20
+  - type: 13
+    prefab: {fileID: 9220065792293397988, guid: 50f56231d8bdc3741859dc41a75ec0a8, type: 3}
+    size: 20
+  - type: 14
+    prefab: {fileID: 6945411147165705636, guid: d035cee8934b48e4eb42a9e8b938cf1a, type: 3}
     size: 20
 --- !u!114 &436943460
 MonoBehaviour:

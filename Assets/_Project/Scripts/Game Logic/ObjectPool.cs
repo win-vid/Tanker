@@ -23,6 +23,9 @@ public class ObjectPool : MonoBehaviour
         TVP,
         NONE,
         T4000,
+        EnemyRocket,
+        TRX,
+        TVPWRACK,
 
     }
 

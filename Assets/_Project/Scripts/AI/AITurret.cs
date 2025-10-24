@@ -4,10 +4,12 @@ public class AITurret : MonoBehaviour
 {
     PlayerStateMachine player;
     AIStateMachine ai;
-    [SerializeField]float shootSpeed;
+    [SerializeField, Range(0.1f, 10f)] float rotationSpeed;
+    [SerializeField, Range(0.1f, 10f)] float shootSpeed;
     float currentShootTime;
     [SerializeField] ObjectPool.PoolType projectile;
     [SerializeField] bool followPlayer;
+    [SerializeField, Tooltip("If this is set to false the turret will not shoot")] bool shootAtPlayer = true;
 
     void Start()
     {
@@ -21,7 +23,7 @@ public class AITurret : MonoBehaviour
     void Update()
     {
         if (followPlayer) RotateTurret();
-        checkShoot();
+        if (shootAtPlayer) checkShoot();
     }
 
     void RotateTurret()
