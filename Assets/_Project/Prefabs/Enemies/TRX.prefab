@@ -2096,7 +2096,7 @@ MonoBehaviour:
   health: 500
   currentHealth: 0
   speed: 1
-  rotationSpeed: 1
+  rotationSpeed: 0.3
   acceleration: 0
   deceleration: 0
   shootSpeed: 5

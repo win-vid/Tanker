@@ -243,9 +243,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da0549f1a7b23ac47aac37b263b47be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AITurret
+  rotationSpeed: 2
   shootSpeed: 1
-  bullet: 0
+  projectile: 0
   followPlayer: 1
+  shootAtPlayer: 1
 --- !u!1 &2518262204571959190
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,6 +448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   health: 15
+  currentHealth: 0
   speed: 6
   rotationSpeed: 3
   acceleration: 0

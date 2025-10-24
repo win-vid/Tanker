@@ -109,7 +109,6 @@ public abstract class AIStateMachine : MonoBehaviour
         {
             currentHealth = health;
             RemoveFromGame();
-            if (wrackPrefab != ObjectPool.PoolType.NONE) spawnWrack();
         }
     }
 
@@ -135,6 +134,8 @@ public abstract class AIStateMachine : MonoBehaviour
         else Debug.LogWarning(this.name + " WaveManager instance not found!");
 
         foreach (Motor motor in motors) motor.gameObject.SetActive(true);   // reactivate motors for next spawn
+
+        if (wrackPrefab != ObjectPool.PoolType.NONE) spawnWrack();
         this.gameObject.SetActive(false);
     }
 }

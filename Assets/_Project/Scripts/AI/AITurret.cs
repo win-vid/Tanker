@@ -44,7 +44,7 @@ public class AITurret : MonoBehaviour
         transform.rotation = Quaternion.Slerp(
             transform.rotation,
             targetRotation,
-            ai.rotationSpeed * Time.deltaTime
+            rotationSpeed * Time.deltaTime
         );
     }
 
