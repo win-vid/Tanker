@@ -1,4 +1,5 @@
 using Mono.Cecil.Cil;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
 /* 
@@ -21,8 +22,8 @@ public abstract class Projectile : MonoBehaviour
     void Awake()
     {
         currentLifeTime = lifeTime;
-        this.projectileMaterial = GetComponent<Renderer>().material;
-        setMaterialColor(projectileColor);
+        this.projectileMaterial = GetComponent<Renderer>()!.material;
+        if (this.projectileMaterial != null) setMaterialColor(projectileColor);
         onSpawn();
     }
 
@@ -67,7 +68,14 @@ public abstract class Projectile : MonoBehaviour
     // handles what happens on impact (currently just deactivates the projectile for object pooling)
     public void onImpact()
     {
-        gameObject.SetActive(false);
+        ResetProjectile();
         currentLifeTime = lifeTime; // reset lifetime for object pooling
+        gameObject.SetActive(false);
+
+    }
+
+    protected virtual void ResetProjectile()
+    {
+        // Override in subclasses if additional reset logic is needed
     }
 }

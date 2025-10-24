@@ -16,6 +16,7 @@ public class WaveManager : MonoBehaviour
 
     public static WaveManager instance;
     [SerializeField] List<Enemy> enemies;
+    [SerializeField] int bossWaveInterval = 10;
 
     [System.Serializable]
 
@@ -51,24 +52,18 @@ public class WaveManager : MonoBehaviour
         Debug.Log("Starting Wave: " + currentWave + " with " + currentWavePoints + " points.");
         enemiesSpawned = 0;
 
+        // Boss Wave every 10 waves
+        if (currentWave % bossWaveInterval == 0 && currentWave != 0)
+        {
+            Enemy boss = new Enemy();
+            boss.type = ObjectPool.PoolType.TRX;
+            spawnEnemy(boss);
+        }
+
         while (currentWavePoints > 0)
         {
             Enemy enemy = GetRandomEnemy();
-            if (enemy.cost <= currentWavePoints)
-            {
-                GameObject spawnedEnemy = ObjectPool.instance.GetPooledObject(enemy.type);
-                if (spawnedEnemy == null)
-                {
-                    // POSSIBLE ISSUE: No more enemies of this type available in pool
-                    Debug.LogWarning("No more enemies of type " + enemy.type + " available in pool.");
-                    break; // exit if no more enemies of this type are available
-                }
-                spawnedEnemy.transform.position = getRandomPosition();
-                spawnedEnemy.transform.rotation = Quaternion.identity;
-                enemiesSpawned++;
-                spawnedEnemy.SetActive(true);
-                currentWavePoints -= enemy.cost;
-            }
+            spawnEnemy(enemy);
         }
         Debug.Log("Wave Points Left: " + currentWavePoints);
     }
@@ -90,5 +85,24 @@ public class WaveManager : MonoBehaviour
         position = mainCamera.transform.position + direction * spawnDistance;
         position.y = 0; // keep on ground level
         return position;
+    }
+
+    void spawnEnemy(Enemy enemy)
+    {
+        if (enemy.cost <= currentWavePoints)
+            {
+                GameObject spawnedEnemy = ObjectPool.instance.GetPooledObject(enemy.type);
+                if (spawnedEnemy == null)
+                {
+                    // POSSIBLE ISSUE: No more enemies of this type available in pool
+                    Debug.LogWarning("No more enemies of type " + enemy.type + " available in pool.");
+                    return; // exit if no more enemies of this type are available
+                }
+                spawnedEnemy.transform.position = getRandomPosition();
+                spawnedEnemy.transform.rotation = Quaternion.identity;
+                enemiesSpawned++;
+                spawnedEnemy.SetActive(true);
+                currentWavePoints -= enemy.cost;
+            }
     }
 }

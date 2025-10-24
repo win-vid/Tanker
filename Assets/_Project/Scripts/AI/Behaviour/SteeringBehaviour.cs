@@ -14,4 +14,10 @@ public class SteeringBehaviour : MonoBehaviour
     {
         return (currentPosition - fleeFromPosition).normalized;
     }
+
+    // Pursue a moving target with prediction
+    public static Vector3 Pursue(Vector3 targetPosition, Vector3 targetVelocity, Vector3 currentPosition, float predictor)
+    {
+        return Seek(targetPosition + targetVelocity * predictor, currentPosition);
+    }
 }

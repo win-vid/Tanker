@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TVP
   health: 1
+  currentHealth: 0
   speed: 10
   rotationSpeed: 10
   acceleration: 0
@@ -60,7 +61,7 @@ MonoBehaviour:
   flockingRadius: 5
   wanderRadius: 15
   flockingRadiusSqr: 0
-  wrackPrefab: 10
+  wrackPrefab: 14
   explosionTimer: 2
   explosionProjectileDegree: 20
 --- !u!65 &6145783281174080678
@@ -313,6 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90b36110d2b6bf5479edd361f740c64d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  rotationSpeed: 1000
 --- !u!1 &5168481255502689341
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,6 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90b36110d2b6bf5479edd361f740c64d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  rotationSpeed: 1000
 --- !u!1 &6273947921541410505
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,6 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90b36110d2b6bf5479edd361f740c64d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  rotationSpeed: 1000
 --- !u!1 &6844469760567858127
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,6 +623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90b36110d2b6bf5479edd361f740c64d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  rotationSpeed: 1000
 --- !u!1 &8261508404763160492
 GameObject:
   m_ObjectHideFlags: 0

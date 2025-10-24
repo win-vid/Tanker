@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class AIStateMachine : MonoBehaviour
@@ -6,7 +7,7 @@ public abstract class AIStateMachine : MonoBehaviour
 
     [Header("Stats")]
     public float health;            // hp
-    float currentHealth;
+    public float currentHealth;
     public float speed;             // movement speed
     public float rotationSpeed;     // rotation speed
     public float acceleration;      // acceleration
@@ -22,6 +23,7 @@ public abstract class AIStateMachine : MonoBehaviour
     [HideInInspector] public PlayerStateMachine player;
     [HideInInspector] public Wander wanderState = new Wander();
     [HideInInspector] public DeadAIState deadState = new DeadAIState();
+    List<Motor> motors = new List<Motor>();
 
     [Header("Steering")]
     [Range(0, 1)] public double seekWeight = 1.0; // weight for separation behavior
@@ -46,6 +48,7 @@ public abstract class AIStateMachine : MonoBehaviour
         player = FindFirstObjectByType<PlayerStateMachine>();           // find player in scene
         flockingRadiusSqr = (float)(flockingRadius * flockingRadius);   // precompute squared radius for performance
         currentHealth = health;                                         // set current health to max health
+        motors.AddRange(GetComponentsInChildren<Motor>());              // get all motors in children
 
         if (WaveManager.instance == null) Debug.LogWarning(this.name + " WaveManager instance not found!");
     }
@@ -130,6 +133,8 @@ public abstract class AIStateMachine : MonoBehaviour
     {
         if (WaveManager.instance != null) WaveManager.instance.enemiesSpawned--;
         else Debug.LogWarning(this.name + " WaveManager instance not found!");
+
+        foreach (Motor motor in motors) motor.gameObject.SetActive(true);   // reactivate motors for next spawn
         this.gameObject.SetActive(false);
     }
 }

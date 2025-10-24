@@ -36,6 +36,10 @@ public class PlayerStateMachine : MonoBehaviour
     public MovementState movementState = new MovementState();
     public DeadState deadState = new DeadState();
 
+    // Physics
+    Vector3 currentVelocity;
+    Vector3 lastPosition;
+
     void Start()
     {
         instance = this;
@@ -53,6 +57,7 @@ public class PlayerStateMachine : MonoBehaviour
     private void FixedUpdate()
     {
         currentState.onFixedUpdate(this);
+        updateVelocity();
 
     }
 
@@ -85,5 +90,16 @@ public class PlayerStateMachine : MonoBehaviour
     {
         this.invincible = value;
         shield.SetActive(value);
+    }
+
+    void updateVelocity()
+    {
+        currentVelocity = (transform.position - lastPosition) / Time.deltaTime;
+        lastPosition = transform.position;
+    }
+
+    public Vector3 getCurrentVelocity()
+    {
+        return currentVelocity;
     }
 }

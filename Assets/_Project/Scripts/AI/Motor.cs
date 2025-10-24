@@ -15,8 +15,9 @@ public class Motor : MonoBehaviour
     {
         if (other.CompareTag("PlayerProjectile"))
         {
-            ai.setCurrentHealth(-100);
+            ai.currentHealth -= 100; // critical damage
             other.gameObject.SetActive(false);
+            gameObject.SetActive(false); // disable motor on hit
         }
     }
 }
