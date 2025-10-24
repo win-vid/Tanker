@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 3405351517073813704}
   - component: {fileID: 32056974111658443}
   - component: {fileID: 6118723764526185341}
+  - component: {fileID: 6443864487955384117}
   m_Layer: 0
   m_Name: Motor1 (1)
   m_TagString: Untagged
@@ -248,6 +249,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f20d0238333e2ea469b1d35966f1c546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &6443864487955384117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2976019741506342655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 2
+  outlineColor: {r: 0, g: 0.6612811, b: 1, a: 1}
+  outlineWidth: 4
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &3098342938603022206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,6 +1326,7 @@ GameObject:
   - component: {fileID: 8436129413808635236}
   - component: {fileID: 7294487384961731268}
   - component: {fileID: 1977449726207032475}
+  - component: {fileID: 6371626431188762915}
   m_Layer: 0
   m_Name: Motor1 (2)
   m_TagString: Untagged
@@ -1372,6 +1392,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f20d0238333e2ea469b1d35966f1c546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &6371626431188762915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6442740697912573617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 2
+  outlineColor: {r: 0, g: 0.6612811, b: 1, a: 1}
+  outlineWidth: 4
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &6967440232506733997
 GameObject:
   m_ObjectHideFlags: 0
@@ -1606,6 +1644,7 @@ GameObject:
   - component: {fileID: 1367597213152741815}
   - component: {fileID: 3501725640909390570}
   - component: {fileID: 1731183936528371992}
+  - component: {fileID: 2265282153791458140}
   m_Layer: 0
   m_Name: Motor1
   m_TagString: Untagged
@@ -1671,6 +1710,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f20d0238333e2ea469b1d35966f1c546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &2265282153791458140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7878415871750863075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 2
+  outlineColor: {r: 0, g: 0.6612811, b: 1, a: 1}
+  outlineWidth: 4
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &8314710515727632039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1834,6 +1891,7 @@ GameObject:
   - component: {fileID: 4194061297262413246}
   - component: {fileID: 8407300973710980869}
   - component: {fileID: 80661051581305572}
+  - component: {fileID: 5982511757522529474}
   m_Layer: 0
   m_Name: Motor1 (4)
   m_TagString: Untagged
@@ -1899,6 +1957,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f20d0238333e2ea469b1d35966f1c546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &5982511757522529474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8367356425640646568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 2
+  outlineColor: {r: 0, g: 0.6612811, b: 1, a: 1}
+  outlineWidth: 4
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &8393359412729599262
 GameObject:
   m_ObjectHideFlags: 0
@@ -1911,6 +1987,7 @@ GameObject:
   - component: {fileID: 1434817471977163941}
   - component: {fileID: 1745301495770040001}
   - component: {fileID: 8760251615534931421}
+  - component: {fileID: 493227362772597116}
   m_Layer: 0
   m_Name: Motor1 (3)
   m_TagString: Untagged
@@ -1976,6 +2053,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f20d0238333e2ea469b1d35966f1c546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &493227362772597116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8393359412729599262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 2
+  outlineColor: {r: 0, g: 0.6612811, b: 1, a: 1}
+  outlineWidth: 4
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &9075313764243565264
 GameObject:
   m_ObjectHideFlags: 0

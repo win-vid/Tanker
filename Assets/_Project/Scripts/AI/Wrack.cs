@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Wrack : MonoBehaviour
@@ -7,6 +8,7 @@ public class Wrack : MonoBehaviour
     [SerializeField] GameObject turret;
     float despawnTime = 5f;
     float currentDespawnTime;
+    [SerializeField] Light expLight;
 
     void Awake()
     {
@@ -49,5 +51,22 @@ public class Wrack : MonoBehaviour
         turretHead.isKinematic = false;
         turretHead.AddForce(Vector3.up * 7f, ForceMode.Impulse);
     }
+
+    // activate light for 0.5 sec then deactivate
+    IEnumerator LightFlash()
+    {
+        if (expLight == null) yield break;
+        
+        expLight.enabled = true;
+        yield return new WaitForSeconds(0.1f);
+        expLight.enabled = false;
+    }
+
+    public void Spawn()
+    {
+        playParticleSystem();
+        StartCoroutine(LightFlash());
+    }
+
 
 }

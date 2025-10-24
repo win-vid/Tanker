@@ -125,7 +125,7 @@ public abstract class AIStateMachine : MonoBehaviour
         wrackObject.transform.position = this.transform.position;
         wrackObject.transform.rotation = this.transform.rotation;
         wrackObject.SetActive(true);
-        wrackObject.GetComponent<Wrack>().playParticleSystem();
+        wrackObject.GetComponent<Wrack>().Spawn();
     }
 
     protected void RemoveFromGame()
