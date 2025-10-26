@@ -32,7 +32,7 @@ public class PauseMenu : MonoBehaviour
     void ExitToMenu()
     {
         Time.timeScale = 1f;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("_MainMenu");
         isPaused = false;
         pauseMenuUI.SetActive(false);
     }

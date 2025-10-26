@@ -50,6 +50,8 @@ MonoBehaviour:
   ps: {fileID: 2553364571398131653}
   wrackPoolType: 8
   turret: {fileID: 4850417437271719606}
+  expLight: {fileID: 0}
+  dissolve: 1
 --- !u!1 &4850417437271719606
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,7 +278,7 @@ PrefabInstance:
     - target: {fileID: 4568627388913119565, guid: 952ce9730c2ed3a4c9dc75bfd257d90b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 7075b8ab060a4e54699dd985a8e8a256, type: 2}
+      objectReference: {fileID: 2100000, guid: 331a2193d4be8a64d888e96b5b7ad50c, type: 2}
     - target: {fileID: 4909338874833168055, guid: 952ce9730c2ed3a4c9dc75bfd257d90b, type: 3}
       propertyPath: m_Name
       value: BigBody
@@ -520,7 +522,7 @@ PrefabInstance:
     - target: {fileID: 4650315703963008433, guid: 362400b376ea2ae4ebad30b598c240ec, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: 7075b8ab060a4e54699dd985a8e8a256, type: 2}
+      objectReference: {fileID: 2100000, guid: 331a2193d4be8a64d888e96b5b7ad50c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -546,7 +548,7 @@ PrefabInstance:
     - target: {fileID: 5019529425929074311, guid: ab5312a9b6bb58e4f9c5eb6be9e3a464, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 7075b8ab060a4e54699dd985a8e8a256, type: 2}
+      objectReference: {fileID: 2100000, guid: 331a2193d4be8a64d888e96b5b7ad50c, type: 2}
     - target: {fileID: 7634877205846944674, guid: ab5312a9b6bb58e4f9c5eb6be9e3a464, type: 3}
       propertyPath: m_LocalScale.x
       value: 23.664282

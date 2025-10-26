@@ -2142,6 +2142,7 @@ GameObject:
   - component: {fileID: 3141142332876417497}
   - component: {fileID: 8188739311112272657}
   - component: {fileID: 1314332087578690862}
+  - component: {fileID: 2401778343739434064}
   m_Layer: 0
   m_Name: TRX
   m_TagString: Untagged
@@ -2203,7 +2204,7 @@ MonoBehaviour:
   flockingRadius: 5
   wanderRadius: 10
   flockingRadiusSqr: 0
-  wrackPrefab: 4
+  wrackPrefab: 15
 --- !u!65 &1314332087578690862
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2225,6 +2226,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.04408743, y: 0.050260156, z: 0.116529085}
   m_Center: {x: 0.0004064878, y: 0.024869885, z: -0.0010273827}
+--- !u!114 &2401778343739434064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9220065792293397988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &154801653763239098
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -49,6 +49,8 @@ MonoBehaviour:
   ps: {fileID: 6524396756988337143}
   wrackPoolType: 4
   turret: {fileID: 0}
+  expLight: {fileID: 0}
+  dissolve: 1
 --- !u!1001 &7279303469922357816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -138,6 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e6afd3008622341b2cd43e20b5b9f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  dissolveMaterial: {fileID: 0}
+  dissolveDuration: 2
 --- !u!1001 &8542565918234073273
 PrefabInstance:
   m_ObjectHideFlags: 0

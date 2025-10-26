@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Wrack : MonoBehaviour
@@ -9,6 +10,8 @@ public class Wrack : MonoBehaviour
     float despawnTime = 5f;
     float currentDespawnTime;
     [SerializeField] Light expLight;
+    List<Renderer> renderers = new List<Renderer>();
+    [SerializeField] bool dissolve = false;
 
     void Awake()
     {
@@ -17,6 +20,7 @@ public class Wrack : MonoBehaviour
         var main = ps.main;
         main.loop = false;
         currentDespawnTime = despawnTime;
+        renderers.AddRange(GetComponentsInChildren<Renderer>());
     }
 
     public void playParticleSystem()
@@ -66,6 +70,38 @@ public class Wrack : MonoBehaviour
     {
         playParticleSystem();
         StartCoroutine(LightFlash());
+        if (dissolve) StartCoroutine(DissolveOverTime());
+    }
+
+    void setDissolveStrength(float value)
+    {
+        if (renderers.Count == 0) return;
+
+
+
+        foreach (Renderer rend in renderers)
+        {
+            foreach (Material mat in rend.materials)
+            {
+                mat.SetFloat("_DissolveStrength", value);
+            }
+        }
+    }
+    
+    IEnumerator DissolveOverTime()
+    {
+        float duration = 3f;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            float dissolveValue = Mathf.Lerp(0f, 1f, elapsed / duration);
+            setDissolveStrength(dissolveValue);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        setDissolveStrength(1f);
     }
 
 
