@@ -156,6 +156,10 @@ MonoBehaviour:
   turret: {fileID: 306715867941953430}
   expLight: {fileID: 0}
   dissolve: 1
+  explosionSounds:
+  - {fileID: 8300000, guid: 5d6d655edd33f7243a40deefe56983c6, type: 3}
+  - {fileID: 8300000, guid: dce902020b23a1243a5704fae49e88bf, type: 3}
+  - {fileID: 8300000, guid: 55396a2155f6f3449b4f228a6c29288c, type: 3}
 --- !u!1001 &1032685365214262792
 PrefabInstance:
   m_ObjectHideFlags: 0

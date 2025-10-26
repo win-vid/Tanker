@@ -387,6 +387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JagdPanzerManager
   health: 5
+  currentHealth: 0
   speed: 5
   rotationSpeed: 1.5
   acceleration: 3
@@ -401,6 +402,10 @@ MonoBehaviour:
   wanderRadius: 10
   flockingRadiusSqr: 0
   wrackPrefab: 4
+  shootSounds:
+  - {fileID: 8300000, guid: d28b164b1251cdb489b99b370c372b35, type: 3}
+  hitSounds:
+  - {fileID: 8300000, guid: 99c5774d48a4510428dbc6b04324277c, type: 3}
 --- !u!65 &701287902933333809
 BoxCollider:
   m_ObjectHideFlags: 0

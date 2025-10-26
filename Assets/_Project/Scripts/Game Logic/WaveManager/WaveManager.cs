@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,6 +6,7 @@ using UnityEngine;
 * Wave Manager
 * Manages enemy waves and spawning.
 * Randomly selects enemies to spawn based on wave points.
+* UIWaveManager handles wave display and must be assigned as a component.
 */
 
 public class WaveManager : MonoBehaviour
@@ -17,6 +19,7 @@ public class WaveManager : MonoBehaviour
     public static WaveManager instance;
     [SerializeField] List<Enemy> enemies;
     [SerializeField] int bossWaveInterval = 10;
+    UIWaveManager uiWaveManager;
 
     [System.Serializable]
 
@@ -29,14 +32,15 @@ public class WaveManager : MonoBehaviour
     void Start()
     {
         instance = this;
+        uiWaveManager = GetComponent<UIWaveManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (enemiesSpawned <= 0)
+        if (enemiesSpawned <= 0 && currentWavePoints <= 0)
         {
-            StartNewWave();
+            StartCoroutine(StartNewWave());
         }
     }
 
@@ -45,10 +49,16 @@ public class WaveManager : MonoBehaviour
         return enemies[Random.Range(0, enemies.Count)];
     }
 
-    void StartNewWave()
+    IEnumerator StartNewWave()
     {
         currentWave++;
         currentWavePoints = currentWave * wavePointIncrement;
+        uiWaveManager.setCurrentWave(currentWave);
+        uiWaveManager.Display();
+        
+        // wait for display time
+        yield return new WaitForSeconds(uiWaveManager.getDisplayTime());
+        
         Debug.Log("Starting Wave: " + currentWave + " with " + currentWavePoints + " points.");
         enemiesSpawned = 0;
 

@@ -34,6 +34,10 @@ public abstract class AIStateMachine : MonoBehaviour
     [Header("Wrack Settings")]
     public ObjectPool.PoolType wrackPrefab;
 
+    [Header("Sound Effects")]
+    public AudioClip[] shootSounds;
+    public AudioClip[] hitSounds;
+
     public void SwitchState(BaseAIState newState)
     {
         currentState.onExit(this);
@@ -78,6 +82,7 @@ public abstract class AIStateMachine : MonoBehaviour
         {
             currentHealth -= other.GetComponent<Projectile>().damage;
             other.GetComponent<Projectile>().onImpact();
+            SoundEffectsManager.instance.PlayRandomSoundEffect(hitSounds, this.transform, 1f);
         }
     }
 
@@ -98,6 +103,7 @@ public abstract class AIStateMachine : MonoBehaviour
                 bullet.transform.position = transform.position + transform.forward * 2f + new Vector3(0, 1f, 0);
                 bullet.transform.rotation = transform.rotation;
             }
+            SoundEffectsManager.instance.PlayRandomSoundEffect(shootSounds, this.transform, 1f);
             bullet.SetActive(true);
         }
     }

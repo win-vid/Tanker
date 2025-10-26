@@ -13,6 +13,8 @@ public class Wrack : MonoBehaviour
     List<Renderer> renderers = new List<Renderer>();
     [SerializeField] bool dissolve = false;
 
+    [SerializeField] AudioClip[] explosionSounds;
+
     void Awake()
     {
         ps.Stop();
@@ -70,6 +72,7 @@ public class Wrack : MonoBehaviour
     {
         playParticleSystem();
         StartCoroutine(LightFlash());
+        SoundEffectsManager.instance.PlayRandomSoundEffect(explosionSounds, transform,1f);
         if (dissolve) StartCoroutine(DissolveOverTime());
     }
 

@@ -463,6 +463,10 @@ MonoBehaviour:
   wanderRadius: 20
   flockingRadiusSqr: 0
   wrackPrefab: 6
+  shootSounds:
+  - {fileID: 8300000, guid: d28b164b1251cdb489b99b370c372b35, type: 3}
+  hitSounds:
+  - {fileID: 8300000, guid: 99c5774d48a4510428dbc6b04324277c, type: 3}
 --- !u!65 &6577550008881200570
 BoxCollider:
   m_ObjectHideFlags: 0

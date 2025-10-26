@@ -71,6 +71,7 @@ public class AITurret : MonoBehaviour
             projectile.transform.position = transform.position + transform.forward * 2f + new Vector3(0, 1f, 0);
             projectile.transform.rotation = transform.rotation * randomJitter;
             projectile.SetActive(true);
+            SoundEffectsManager.instance.PlayRandomSoundEffect(ai.shootSounds, transform, 1f);
 
             // Check if Projectile is Bullet or AI
             Projectile bullet = projectile.GetComponent<Projectile>();
