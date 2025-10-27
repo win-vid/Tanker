@@ -137,6 +137,7 @@ public abstract class AIStateMachine : MonoBehaviour
 
     protected void RemoveFromGame()
     {
+        ScoreManager.instance.AddScore(scoreValue);
         if (WaveManager.instance != null) WaveManager.instance.enemiesSpawned--;
         else Debug.LogWarning(this.name + " WaveManager instance not found!");
 

@@ -17,7 +17,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     // Health
     public int maxHealth = 100;
-    bool invincible = false;
+    [SerializeField] bool invincible = false;
 
     // Current State
     public float currentSpeed = 0f;
@@ -40,6 +40,9 @@ public class PlayerStateMachine : MonoBehaviour
     Vector3 currentVelocity;
     Vector3 lastPosition;
 
+    [Header("Sound Effects")]
+    [SerializeField] AudioClip[] hitSounds;
+
     void Start()
     {
         instance = this;
@@ -58,6 +61,7 @@ public class PlayerStateMachine : MonoBehaviour
     {
         currentState.onFixedUpdate(this);
         updateVelocity();
+        checkHealth();
 
     }
 
@@ -76,6 +80,7 @@ public class PlayerStateMachine : MonoBehaviour
             currentHealth -= other.GetComponent<Projectile>().damage;
             other.GetComponent<Projectile>().onImpact();
             Debug.Log("Player hit, health: " + currentHealth);
+            SoundEffectsManager.instance.PlayRandomSoundEffect(hitSounds, transform,1f);
 
             // TODO: later add dead state here
         }
@@ -101,5 +106,19 @@ public class PlayerStateMachine : MonoBehaviour
     public Vector3 getCurrentVelocity()
     {
         return currentVelocity;
+    }
+
+    void checkHealth()
+    {
+        if (currentHealth <= 0 && currentState != deadState && !invincible)
+        {
+            SwitchState(deadState);
+        }
+    }
+
+    [ContextMenu("Die")]
+    public void Die()
+    {
+        currentHealth = 0;
     }
 }

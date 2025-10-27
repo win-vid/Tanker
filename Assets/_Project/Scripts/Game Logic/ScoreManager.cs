@@ -1,25 +1,42 @@
+using System.Collections.Generic;
+using System.IO;
+using TMPro;
 using UnityEngine;
 
 // Singleton Score Manager to handle player scores
 public class ScoreManager : MonoBehaviour
     {
-        public static ScoreManager instance;
-        string playerName = "Player_Name";
+    public static ScoreManager instance;
+    int _score;
+    [SerializeField] GameObject UIScoreBoard;
+    [SerializeField] TextMeshProUGUI highScoreText;
+    [SerializeField] TextMeshProUGUI currentScoreText;
 
-        void Awake()
+    void Awake()
+    {
+        instance = this;
+        UIScoreBoard.SetActive(false);
+    }
+
+    public void AddScore(int points)
+    {
+        _score += points;
+    }
+
+    void compareScore()
+    {
+
+        if (PlayerPrefs.GetInt("HighScore") < _score)
         {
-            instance = this;
-            playerName = PlayerPrefs.GetString(name);
+            PlayerPrefs.SetInt("HighScore", _score);
         }
-        void Update()
-        {
-            
-        }
-        
-        void setPlayerName(string newName)
-        {
-            playerName = newName;
-            PlayerPrefs.SetString("Player_Name", playerName);
-        }
+    }
     
+    public void updateScore()
+    {
+        compareScore();
+        UIScoreBoard.SetActive(true);
+        highScoreText.text = "HIGH SCORE: " + PlayerPrefs.GetInt("HighScore").ToString();
+        currentScoreText.text = "SCORE: " + _score.ToString();
+    }
 }

@@ -55,6 +55,7 @@ MonoBehaviour:
   deceleration: 0
   shootSpeed: 2
   aimBias: 30
+  scoreValue: 1
   projectilePrefab: 0
   turret: {fileID: 0}
   player: {fileID: 0}

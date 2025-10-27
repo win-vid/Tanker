@@ -90,4 +90,9 @@ public class Turret : MonoBehaviour
     {
         Debug.DrawRay(turret.transform.position, turret.transform.forward * 100f, Color.red);
     }
+
+    public void setAlive(bool state)
+    {
+        alive = state;
+    }
 }
