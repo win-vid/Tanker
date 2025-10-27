@@ -15,6 +15,7 @@ public abstract class AIStateMachine : MonoBehaviour
     public float shootSpeed;        // time between shots
     public float aimBias;           // aim randomness
     bool active = false;
+    [SerializeField] int scoreValue;     // score value on death
 
     [Header("References")]
     [SerializeField] public ObjectPool.PoolType projectilePrefab;
@@ -143,5 +144,10 @@ public abstract class AIStateMachine : MonoBehaviour
 
         if (wrackPrefab != ObjectPool.PoolType.NONE) spawnWrack();
         this.gameObject.SetActive(false);
+    }
+    
+    public int GetScoreValue()
+    {
+        return scoreValue;
     }
 }
