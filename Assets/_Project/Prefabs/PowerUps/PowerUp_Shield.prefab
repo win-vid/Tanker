@@ -70,6 +70,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PowerUp_Heart
   symbolObject: {fileID: 841908703939586824}
   rotationSpeed: 50
+  lifeTime: 20
+  powerUpSoundEffects:
+  - {fileID: 8300000, guid: 48ee252038dc7ba419b24d2a14d24d4b, type: 3}
   effect:
     effectType: 1
     duration: 20

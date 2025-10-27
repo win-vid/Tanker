@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 1614362113079218996}
   - component: {fileID: 1880590036910141484}
   - component: {fileID: 1301394287294233715}
+  - component: {fileID: 2894219153584840183}
   m_Layer: 0
   m_Name: EnemyRocket
-  m_TagString: Untagged
+  m_TagString: EnemyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +31,7 @@ Transform:
   m_LocalRotation: {x: -0.000000059604645, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -10.06, y: 1.88, z: 7.72}
   m_LocalScale: {x: 25.78877, y: 44.89493, z: 61.49788}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6757598618836171084}
   m_Father: {fileID: 0}
@@ -106,10 +107,31 @@ MonoBehaviour:
   speed: 5
   lifeTime: 5
   currentLifeTime: 0
-  damage: 10
+  damage: 20
   hurtPlayer: 1
   projectileColor: {r: 0, g: 0, b: 0, a: 0}
   flyTime: 2
+--- !u!65 &2894219153584840183
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225696326685211155}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.01, y: 0.035629038, z: 0.027731704}
+  m_Center: {x: 0, y: -0.00047362963, z: 0.008865856}
 --- !u!1 &6717949324274750282
 GameObject:
   m_ObjectHideFlags: 0

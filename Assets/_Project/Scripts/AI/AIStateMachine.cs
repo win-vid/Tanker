@@ -82,7 +82,7 @@ public abstract class AIStateMachine : MonoBehaviour
         {
             currentHealth -= other.GetComponent<Projectile>().damage;
             other.GetComponent<Projectile>().onImpact();
-            SoundEffectsManager.instance.PlayRandomSoundEffect(hitSounds, this.transform, 1f);
+            SoundEffectsManager.instance.PlayRandomSoundEffect(hitSounds, player.transform, 1f);
         }
     }
 

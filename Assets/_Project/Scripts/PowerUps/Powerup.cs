@@ -14,6 +14,9 @@ public abstract class Powerup : MonoBehaviour
     [SerializeField] protected GameObject symbolObject;  // The Object that represents the power-up visually
     [SerializeField] private float rotationSpeed = 50f;
     Vector3 _initialScale;
+    [SerializeField] float lifeTime = 20f; // Lifetime before disappearing
+    float currentLifeTime;
+    [SerializeField] AudioClip[] powerUpSoundEffects;
 
     public enum EffectType
     {
@@ -60,14 +63,28 @@ public abstract class Powerup : MonoBehaviour
         {
             Debug.LogError("Powerup: No PowerupManager instance found in the scene.");
         }
-        
+
         _initialScale = symbolObject.transform.localScale;
+        
+        currentLifeTime = lifeTime;
 
     }
 
     void Update()
     {
         onUpdate();
+        checkLifeTime();
+    }
+
+    void checkLifeTime()
+    {
+        currentLifeTime -= Time.deltaTime;
+        if (currentLifeTime <= 0f)
+        {
+            currentLifeTime = lifeTime;
+            gameObject.SetActive(false);
+
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -76,6 +93,7 @@ public abstract class Powerup : MonoBehaviour
         {
             onPickUp();
             PowerupManager.instance.checkPowerup(effect);
+            SoundEffectsManager.instance.PlayRandomSoundEffect(powerUpSoundEffects, PlayerStateMachine.instance.transform,1f);
             gameObject.SetActive(false);
         }
     }

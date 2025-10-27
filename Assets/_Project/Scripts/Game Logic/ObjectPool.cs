@@ -27,6 +27,9 @@ public class ObjectPool : MonoBehaviour
         TRX,
         TVPWRACK,
         TRXWRACK,
+        PUPOWERSHOT,
+        PUHEALTH,
+        PUSHIELD,
 
     }
 

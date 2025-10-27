@@ -47,8 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f560f8d3f348fc54a9ea921b32173d0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PowerUp_Heart
-  symbolObject: {fileID: 0}
+  symbolObject: {fileID: 837494234375308910}
   rotationSpeed: 30
+  lifeTime: 20
+  powerUpSoundEffects:
+  - {fileID: 8300000, guid: 48ee252038dc7ba419b24d2a14d24d4b, type: 3}
   effect:
     effectType: 0
     duration: 0
@@ -150,6 +153,11 @@ PrefabInstance:
 --- !u!4 &59866472172788948 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 84bf87632e5ba81428321ef0ac57e12e, type: 3}
+  m_PrefabInstance: {fileID: 530871977656580927}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &837494234375308910 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 84bf87632e5ba81428321ef0ac57e12e, type: 3}
   m_PrefabInstance: {fileID: 530871977656580927}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6650005562913354795

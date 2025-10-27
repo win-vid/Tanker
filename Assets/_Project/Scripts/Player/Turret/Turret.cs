@@ -16,6 +16,9 @@ public class Turret : MonoBehaviour
     float coolDown = 0f;
     bool alive = true;
 
+    [Header("Sounds")]
+    [SerializeField] AudioClip[] shootSounds;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -79,6 +82,7 @@ public class Turret : MonoBehaviour
             projectile.transform.position = turret.transform.position + turret.transform.forward * 2f;
             projectile.transform.rotation = turret.transform.rotation;
             projectile.SetActive(true);
+            SoundEffectsManager.instance.PlayRandomSoundEffect(shootSounds, turret.transform, 1f);
         }
     }
 

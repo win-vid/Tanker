@@ -70,6 +70,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PowerUp_Heart
   symbolObject: {fileID: 7549854941595673801}
   rotationSpeed: 50
+  lifeTime: 20
+  powerUpSoundEffects:
+  - {fileID: 8300000, guid: 48ee252038dc7ba419b24d2a14d24d4b, type: 3}
   effect:
     effectType: 2
     duration: 20
@@ -222,15 +225,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 3556bf75659dddb48859a06e3044f969, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.1338
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3556bf75659dddb48859a06e3044f969, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.1338
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3556bf75659dddb48859a06e3044f969, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.1338
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3556bf75659dddb48859a06e3044f969, type: 3}
       propertyPath: m_LocalPosition.x
@@ -271,6 +274,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 3556bf75659dddb48859a06e3044f969, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3556bf75659dddb48859a06e3044f969, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3556bf75659dddb48859a06e3044f969, type: 3}
       propertyPath: m_Name
