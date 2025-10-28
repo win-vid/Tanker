@@ -15,6 +15,13 @@ public class ScoreManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+
+        if(UIScoreBoard == null)
+        {
+            Debug.LogError("ScoreManager: UIScoreBoard reference is missing!");
+            return;
+        }
+
         UIScoreBoard.SetActive(false);
     }
 
@@ -35,6 +42,7 @@ public class ScoreManager : MonoBehaviour
     public void updateScore()
     {
         compareScore();
+        if (UIScoreBoard == null || currentScoreText == null || highScoreText == null) { Debug.LogError("ScoreManager: One or more UI references are missing!"); return; }
         UIScoreBoard.SetActive(true);
         highScoreText.text = "HIGH SCORE: " + PlayerPrefs.GetInt("HighScore").ToString();
         currentScoreText.text = "SCORE: " + _score.ToString();

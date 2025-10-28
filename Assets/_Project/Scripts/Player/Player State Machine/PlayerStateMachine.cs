@@ -110,6 +110,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     void checkHealth()
     {
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         if (currentHealth <= 0 && currentState != deadState && !invincible)
         {
             SwitchState(deadState);
