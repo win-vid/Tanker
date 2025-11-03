@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 862313126245170512}
   - component: {fileID: 3044146509225653283}
   - component: {fileID: 6145783281174080678}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TVP
   m_TagString: Untagged
   m_Icon: {fileID: 0}

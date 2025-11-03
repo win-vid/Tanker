@@ -2143,7 +2143,7 @@ GameObject:
   - component: {fileID: 8188739311112272657}
   - component: {fileID: 1314332087578690862}
   - component: {fileID: 2401778343739434064}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TRX
   m_TagString: Untagged
   m_Icon: {fileID: 0}

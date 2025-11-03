@@ -517,7 +517,7 @@ GameObject:
   - component: {fileID: 5443119905383530926}
   - component: {fileID: 8209176824234568188}
   - component: {fileID: 6888218728297187101}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: T4000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
