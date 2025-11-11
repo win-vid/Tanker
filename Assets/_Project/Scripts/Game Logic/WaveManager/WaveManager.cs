@@ -21,6 +21,11 @@ public class WaveManager : MonoBehaviour
     [SerializeField] int bossWaveInterval = 10;
     UIWaveManager uiWaveManager;
 
+    [SerializeField] float minDistanceFromCamera = 25f; // outside camera view
+    [SerializeField] float maxDistanceFromCamera = 60f; // not too far either
+
+    [SerializeField] Collider _worldColliderBox;
+
     [System.Serializable]
 
     // Enemy class to hold type and cost
@@ -89,12 +94,41 @@ public class WaveManager : MonoBehaviour
             return position;
         }
 
-        float spawnDistance = 30f; // distance from the camera to spawn enemies
-        float angle = Random.Range(0, 360);
-        Vector3 direction = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad));
-        position = mainCamera.transform.position + direction * spawnDistance;
-        position.y = 0; // keep on ground level
-        return position;
+        if (_worldColliderBox == null)
+        {
+            Debug.LogError("No Wolrd Box Set");
+            return position;
+        }
+
+        // Get world bounds
+        Bounds bounds = _worldColliderBox.bounds;
+
+        for (int i = 0; i < 20; i++) // try multiple times to find a valid spot
+        {
+            // Pick random position within world box
+            float x = Random.Range(bounds.min.x, bounds.max.x);
+            float z = Random.Range(bounds.min.z, bounds.max.z);
+            Vector3 candidate = new Vector3(x, 0, z);
+
+            // Check distance and visibility
+            float dist = Vector3.Distance(candidate, mainCamera.transform.position);
+
+            if (dist < minDistanceFromCamera || dist > maxDistanceFromCamera)
+                continue; // too close or too far
+
+            // Convert world pos to viewport space (0–1 range)
+            Vector3 viewportPos = mainCamera.WorldToViewportPoint(candidate);
+
+            // If it's inside the camera’s view, skip it
+            if (viewportPos.z > 0 && viewportPos.x > 0 && viewportPos.x < 1 && viewportPos.y > 0 && viewportPos.y < 1)
+                continue;
+
+            // Otherwise it's outside view and within world bounds — valid!
+            return candidate;
+        }
+
+        Debug.LogWarning("Could not find valid spawn position after several attempts!");
+        return mainCamera.transform.position + mainCamera.transform.forward * maxDistanceFromCamera;
     }
 
     void spawnEnemy(Enemy enemy)

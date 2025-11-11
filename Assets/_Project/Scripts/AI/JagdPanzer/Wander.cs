@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Rendering.Universal.Internal;
 
 public class Wander : BaseAIState
@@ -27,7 +28,11 @@ public class Wander : BaseAIState
     {
         Vector3 playerPos = stateMachine.player.transform.position;
         Vector3 AIpos = stateMachine.transform.position;
-        Vector3 pointOfInterest = playerPos + randomOffset;
+        Vector3 pointOfInterest = playerPos + randomOffset;         // random offset around player
+
+        stateMachine.nav.SetDestination(pointOfInterest);
+
+        /*
         // flee from player
         Vector3 flee = SteeringBehaviour.Flee(playerPos, AIpos);
         // move to point
@@ -38,6 +43,7 @@ public class Wander : BaseAIState
 
         // Move the AI into direction mutliplied with speed and deltaTime
         stateMachine.transform.position += Vector3.Scale(direction, new Vector3(1, 0, 1)) * stateMachine.speed * Time.deltaTime;
+        */
 
         // Look where you are going
         if (direction.sqrMagnitude > 0.001f) // prevent NaN rotation when direction is zero

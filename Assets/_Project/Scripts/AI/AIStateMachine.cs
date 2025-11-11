@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public abstract class AIStateMachine : MonoBehaviour
 {
     public BaseAIState currentState;
@@ -24,6 +26,7 @@ public abstract class AIStateMachine : MonoBehaviour
     [HideInInspector] public PlayerStateMachine player;
     [HideInInspector] public Wander wanderState = new Wander();
     [HideInInspector] public DeadAIState deadState = new DeadAIState();
+    [HideInInspector] public NavMeshAgent nav;
     List<Motor> motors = new List<Motor>();
 
     [Header("Steering")]
@@ -54,6 +57,9 @@ public abstract class AIStateMachine : MonoBehaviour
         flockingRadiusSqr = (float)(flockingRadius * flockingRadius);   // precompute squared radius for performance
         currentHealth = health;                                         // set current health to max health
         motors.AddRange(GetComponentsInChildren<Motor>());              // get all motors in children
+        nav = GetComponent<NavMeshAgent>();                             // get Nav Mesh Component
+
+        setNavAgentSettings();
 
         if (WaveManager.instance == null) Debug.LogWarning(this.name + " WaveManager instance not found!");
     }
@@ -146,9 +152,15 @@ public abstract class AIStateMachine : MonoBehaviour
         if (wrackPrefab != ObjectPool.PoolType.NONE) spawnWrack();
         this.gameObject.SetActive(false);
     }
-    
+
     public int GetScoreValue()
     {
         return scoreValue;
+    }
+
+    void setNavAgentSettings()
+    {
+        nav.speed = this.speed;
+        nav.acceleration = this.acceleration;
     }
 }
