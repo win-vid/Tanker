@@ -113,6 +113,7 @@ public class PlayerStateMachine : MonoBehaviour
         this.currentHealth = Mathf.Min(this.currentHealth + amount, this.maxHealth);
         healthbar.setHealth(currentHealth);
         HealthLightIndicator.instance.checkColor();
+        HealthLightIndicator.instance.checkColor();
     }
 
     public void setInvincible(bool value)

@@ -55,7 +55,7 @@ MonoBehaviour:
   effect:
     effectType: 0
     duration: 0
-    amount: 0
+    amount: 25
 --- !u!65 &5179548547570761092
 BoxCollider:
   m_ObjectHideFlags: 0
