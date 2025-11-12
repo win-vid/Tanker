@@ -21,6 +21,7 @@ public class PlayerStateMachine : MonoBehaviour
     // Health
     public int maxHealth = 100;
     [SerializeField] bool invincible = false;
+    [SerializeField] Healthbar healthbar;
 
     // Current State
     public float currentSpeed = 0f;
@@ -52,6 +53,15 @@ public class PlayerStateMachine : MonoBehaviour
         instance = this;
 
         rb = GetComponent<Rigidbody>();
+        healthbar = FindFirstObjectByType<Healthbar>();
+
+        // set maxHealth of healthbar to players maxHealth
+        if (healthbar != null)
+        {
+            healthbar.setMaxHealth(maxHealth);
+            healthbar.setHealth(maxHealth);
+        }
+        else Debug.LogError("No Healthbar UI set or created");
         
         currentHealth = maxHealth;
 
@@ -81,6 +91,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     }
 
+    // Collide with enemy projectile
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("EnemyProjectile") && !invincible)
@@ -90,6 +101,9 @@ public class PlayerStateMachine : MonoBehaviour
             Debug.Log("Player hit, health: " + currentHealth);
             SoundEffectsManager.instance.PlayRandomSoundEffect(hitSounds, transform, 1f);
 
+            // Update Healthbar
+            healthbar.setHealth(currentHealth);
+            HealthLightIndicator.instance.checkColor();
             // TODO: later add dead state here
         }
     }
@@ -97,6 +111,8 @@ public class PlayerStateMachine : MonoBehaviour
     public void Heal(int amount)
     {
         this.currentHealth = Mathf.Min(this.currentHealth + amount, this.maxHealth);
+        healthbar.setHealth(currentHealth);
+        HealthLightIndicator.instance.checkColor();
     }
 
     public void setInvincible(bool value)
