@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5078175331351971351}
   - component: {fileID: 6165642751104315435}
   - component: {fileID: 5445362576561665394}
-  - component: {fileID: 8246646920332203619}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -90,27 +89,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8246646920332203619
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2258205227844121536}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2461596666791680180
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AITurret
   rotationSpeed: 3
   shootSpeed: 1
+  _projectileSpawnPoint: {fileID: 0}
   projectile: 0
   followPlayer: 1
   shootAtPlayer: 1
@@ -464,6 +443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AITurret
   rotationSpeed: 0.1
   shootSpeed: 8
+  _projectileSpawnPoint: {fileID: 0}
   projectile: 3
   followPlayer: 0
   shootAtPlayer: 1
@@ -478,7 +458,6 @@ GameObject:
   - component: {fileID: 7155200891123658266}
   - component: {fileID: 656145029807559405}
   - component: {fileID: 2204237666666455180}
-  - component: {fileID: 7185808593372544631}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -557,27 +536,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7185808593372544631
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4001908390689025573}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4012657641145967423
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,9 +736,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AITurret
   rotationSpeed: 1
   shootSpeed: 5
+  _projectileSpawnPoint: {fileID: 0}
   projectile: 0
   followPlayer: 1
   shootAtPlayer: 0
+--- !u!1 &4814603320107800289
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1941347287573936546}
+  m_Layer: 0
+  m_Name: ProjectileSpawner (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1941347287573936546
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4814603320107800289}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0005, y: 0, z: 0.026600061}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3757725249776197857}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5366830250050613848
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,6 +828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AITurret
   rotationSpeed: 2
   shootSpeed: 3
+  _projectileSpawnPoint: {fileID: 0}
   projectile: 0
   followPlayer: 1
   shootAtPlayer: 1
@@ -1160,6 +1151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AITurret
   rotationSpeed: 2
   shootSpeed: 3
+  _projectileSpawnPoint: {fileID: 0}
   projectile: 2
   followPlayer: 1
   shootAtPlayer: 1
@@ -1410,6 +1402,37 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!1 &6839850494401548398
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1873165630782077492}
+  m_Layer: 0
+  m_Name: ProjectileSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1873165630782077492
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6839850494401548398}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0266}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2570543299878328077}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6967440232506733997
 GameObject:
   m_ObjectHideFlags: 0
@@ -1421,7 +1444,6 @@ GameObject:
   - component: {fileID: 8119010658858373462}
   - component: {fileID: 7100390102314327948}
   - component: {fileID: 2572788664597971753}
-  - component: {fileID: 7826381748364267483}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1500,27 +1522,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7826381748364267483
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6967440232506733997}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7716687568388132632
 GameObject:
   m_ObjectHideFlags: 0
@@ -1532,7 +1533,6 @@ GameObject:
   - component: {fileID: 26908497140830785}
   - component: {fileID: 7436047727454089139}
   - component: {fileID: 7145633574391100190}
-  - component: {fileID: 458110691228439472}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1611,27 +1611,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &458110691228439472
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7716687568388132632}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7878415871750863075
 GameObject:
   m_ObjectHideFlags: 0
@@ -2128,6 +2107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AITurret
   rotationSpeed: 3
   shootSpeed: 1
+  _projectileSpawnPoint: {fileID: 0}
   projectile: 0
   followPlayer: 1
   shootAtPlayer: 1
@@ -2260,7 +2240,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 9220065792293397988}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.04
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -2577,7 +2557,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1130619161597704984, guid: 1fceeac361080cc41b8b6b1b43226da4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1873165630782077492}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4892818702811128085, guid: 1fceeac361080cc41b8b6b1b43226da4, type: 3}
       insertIndex: -1
@@ -2607,6 +2590,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AITurret
   rotationSpeed: 0.1
   shootSpeed: 5
+  _projectileSpawnPoint: {fileID: 0}
   projectile: 12
   followPlayer: 0
   shootAtPlayer: 1
@@ -2758,7 +2742,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1130619161597704984, guid: 1fceeac361080cc41b8b6b1b43226da4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1941347287573936546}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4892818702811128085, guid: 1fceeac361080cc41b8b6b1b43226da4, type: 3}
       insertIndex: -1
@@ -2788,6 +2775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AITurret
   rotationSpeed: 0.1
   shootSpeed: 5
+  _projectileSpawnPoint: {fileID: 0}
   projectile: 12
   followPlayer: 0
   shootAtPlayer: 1

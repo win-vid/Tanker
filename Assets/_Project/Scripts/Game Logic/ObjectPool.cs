@@ -30,6 +30,7 @@ public class ObjectPool : MonoBehaviour
         PUPOWERSHOT,
         PUHEALTH,
         PUSHIELD,
+        BULLETCASE,
 
     }
 

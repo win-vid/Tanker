@@ -534,7 +534,7 @@ Transform:
   m_GameObject: {fileID: 5896864537985418278}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.814375, y: 0.43, z: -16.642439}
+  m_LocalPosition: {x: -7.814375, y: 0, z: -16.642439}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -608,7 +608,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 5896864537985418278}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 2.2
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -841,7 +841,6 @@ GameObject:
   - component: {fileID: 4410791708290874233}
   - component: {fileID: 6003755604406197051}
   - component: {fileID: 4134446913878754422}
-  - component: {fileID: 4865434364922349582}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -920,27 +919,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4865434364922349582
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9005858646334488246}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &4161615258180750080
 PrefabInstance:
   m_ObjectHideFlags: 0

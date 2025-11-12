@@ -18,6 +18,7 @@ public class Turret : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField] AudioClip[] shootSounds;
+    [SerializeField] MouseLoadingEffect mouseLoadingEffect;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -43,9 +44,26 @@ public class Turret : MonoBehaviour
 
     // Update the Cool Down Timer when the Turret has shot
     void UpdateCoolDown()
+{
+    if (coolDown > 0f)
     {
-        if (coolDown >= 0) coolDown -= Time.deltaTime;
+        coolDown -= Time.deltaTime;
+
+        // Show loading effect if not active
+        if (!mouseLoadingEffect.gameObject.activeSelf)
+            mouseLoadingEffect.Show();
+
+        // Hide slightly before cooldown finishes (0.5s early)
+        if (coolDown <= 0.1f && mouseLoadingEffect.gameObject.activeSelf)
+            mouseLoadingEffect.Hide();
     }
+    else
+    {
+        // Safety check: make sure it's hidden when done
+        if (mouseLoadingEffect.gameObject.activeSelf)
+            mouseLoadingEffect.Hide();
+    }
+}
 
     // Rotate the turret to face the mouse position
     void RotateTurret()
@@ -84,6 +102,10 @@ public class Turret : MonoBehaviour
             projectile.SetActive(true);
             SoundEffectsManager.instance.PlayRandomSoundEffect(shootSounds, turret.transform, 1f);
         }
+
+        // Spawn Bullet Case
+
+        
     }
 
     void RenderLine()

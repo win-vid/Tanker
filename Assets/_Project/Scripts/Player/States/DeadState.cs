@@ -6,6 +6,7 @@ public class DeadState : BaseState
     {
         ScoreManager.instance.updateScore();
         player.currentSpeed = 0f;
+        player.isAlive = false;
         player.turret.setAlive(false);
     }
 

@@ -6,6 +6,7 @@ public class AITurret : MonoBehaviour
     AIStateMachine ai;
     [SerializeField, Range(0.1f, 10f)] float rotationSpeed;
     [SerializeField, Range(0.1f, 10f)] float shootSpeed;
+    [SerializeField] Transform _projectileSpawnPoint;
     float currentShootTime;
     [SerializeField] ObjectPool.PoolType projectile;
     [SerializeField] bool followPlayer;
@@ -16,6 +17,7 @@ public class AITurret : MonoBehaviour
 
         player = FindFirstObjectByType<PlayerStateMachine>();
         ai = GetComponentInParent<AIStateMachine>();
+        if (_projectileSpawnPoint = null) _projectileSpawnPoint = this.gameObject.transform;
         currentShootTime = shootSpeed;
     }
 
@@ -68,7 +70,7 @@ public class AITurret : MonoBehaviour
         {
 
             Quaternion randomJitter = Quaternion.Euler(0, Random.Range(-ai.aimBias, ai.aimBias), 0);
-            projectile.transform.position = transform.position + transform.forward * 2f + new Vector3(0, 1f, 0);
+            projectile.transform.position = transform.position + transform.forward * 2f;
             projectile.transform.rotation = transform.rotation * randomJitter;
             projectile.SetActive(true);
             SoundEffectsManager.instance.PlayRandomSoundEffect(ai.shootSounds, transform, 1f);

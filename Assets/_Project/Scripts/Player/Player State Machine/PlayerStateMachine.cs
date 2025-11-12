@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 
 // This is the heart of the player controller. It manages the different states the player can be in.
 // It starts in the IdleState and can switch to other states as needed.
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerStateMachine : MonoBehaviour
 {
     public static PlayerStateMachine instance;
@@ -14,6 +16,7 @@ public class PlayerStateMachine : MonoBehaviour
     public float rotationSpeed = 100f;
     public float acceleration = 5f;
     public float deceleration = 6f;
+    public bool isAlive = true;
 
     // Health
     public int maxHealth = 100;
@@ -29,6 +32,7 @@ public class PlayerStateMachine : MonoBehaviour
     // References
     public Turret turret;
     [SerializeField] GameObject shield;
+    [HideInInspector] public Rigidbody rb;
 
     // States
     BaseState currentState;
@@ -46,7 +50,11 @@ public class PlayerStateMachine : MonoBehaviour
     void Start()
     {
         instance = this;
+
+        rb = GetComponent<Rigidbody>();
+        
         currentHealth = maxHealth;
+
         currentState = idleState;
         currentState.onEnter(this);
         shield.SetActive(false);
@@ -80,7 +88,7 @@ public class PlayerStateMachine : MonoBehaviour
             currentHealth -= other.GetComponent<Projectile>().damage;
             other.GetComponent<Projectile>().onImpact();
             Debug.Log("Player hit, health: " + currentHealth);
-            SoundEffectsManager.instance.PlayRandomSoundEffect(hitSounds, transform,1f);
+            SoundEffectsManager.instance.PlayRandomSoundEffect(hitSounds, transform, 1f);
 
             // TODO: later add dead state here
         }
