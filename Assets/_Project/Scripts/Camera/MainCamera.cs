@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class MainCamera : MonoBehaviour
 {
-    [SerializeField] GameObject player;
+    [SerializeField] PlayerStateMachine player;
+
+    void Awake()
+    {
+        player = FindFirstObjectByType<PlayerStateMachine>();
+    }
 
     // Update is called once per frame
     void Update()

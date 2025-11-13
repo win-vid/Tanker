@@ -132,7 +132,7 @@ public class WaveManager : MonoBehaviour
         }
 
         Debug.LogWarning("Could not find valid spawn position after several attempts!");
-        return mainCamera.transform.position + mainCamera.transform.forward * maxDistanceFromCamera;
+        return new Vector3(0,0,0);  // spawn at world position 0
     }
 
     void spawnEnemy(Enemy enemy)

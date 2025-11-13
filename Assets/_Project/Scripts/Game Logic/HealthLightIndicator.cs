@@ -1,3 +1,4 @@
+using MilkShake;
 using UnityEngine;
 
 [RequireComponent(typeof(Light))]
@@ -13,6 +14,8 @@ public class HealthLightIndicator : MonoBehaviour
     [SerializeField]ParticleSystem ps;
     [SerializeField]ParticleSystem hurtSparks;
     [SerializeField]GameObject hurtVolume;
+    [SerializeField] Shaker cameraShaker;
+    [SerializeField] ShakePreset hurtShake;
 
     void Start()
     {
@@ -38,7 +41,10 @@ public class HealthLightIndicator : MonoBehaviour
             alarmSound.SetActive(false);
             hurtVolume.SetActive(false);
         }
-        if(currentHealth > 0) hurtSparks.Play();
+        if(currentHealth > 0) {
+            hurtSparks.Play();
+            cameraShaker.Shake(hurtShake);
+        }
     }
 
 }

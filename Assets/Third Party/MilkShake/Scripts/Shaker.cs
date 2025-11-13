@@ -9,6 +9,7 @@ namespace MilkShake
     [AddComponentMenu("MilkShake/Shaker")]
     public class Shaker : MonoBehaviour
     {
+        public static Shaker instance;
         /// <summary>
         /// A static list of Shakers.
         /// Shakers are added to this list on Awake if Add To Global Shakers is set to true.
@@ -102,6 +103,7 @@ namespace MilkShake
 
         private void Awake()
         {
+            instance = this;
             if (addToGlobalShakers)
             {
                 GlobalShakers.Add(this);
@@ -116,7 +118,7 @@ namespace MilkShake
             }
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             ShakeResult shake = new ShakeResult();
 

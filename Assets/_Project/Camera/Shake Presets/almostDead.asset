@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 955f6c9be248dc249a31bad716cc6963, type: 3}
-  m_Name: Hurt
+  m_Name: almostDead
   m_EditorClassIdentifier: Assembly-CSharp::MilkShake.ShakePreset
-  shakeType: 0
-  strength: 5
-  roughness: 2
-  fadeIn: 0
-  fadeOut: 0.3
+  shakeType: 1
+  strength: 1
+  roughness: 4
+  fadeIn: 0.2
+  fadeOut: 0.2
   positionInfluence: {x: 0, y: 0, z: 0}
   rotationInfluence: {x: 4, y: 0, z: 4}

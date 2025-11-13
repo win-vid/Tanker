@@ -31,6 +31,7 @@ public class ObjectPool : MonoBehaviour
         PUHEALTH,
         PUSHIELD,
         BULLETCASE,
+        T4WRACK,
 
     }
 

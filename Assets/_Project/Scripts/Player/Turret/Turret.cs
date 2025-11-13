@@ -1,3 +1,5 @@
+using System.Collections;
+using MilkShake;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +10,7 @@ using UnityEngine.InputSystem;
 
 public class Turret : MonoBehaviour
 {
+    public static Turret instance;
     public GameObject turret;
     [SerializeField] GameObject projectilePrefab;
     [Range(0f, 10f)] public float rotationSpeed = 20f;
@@ -15,6 +18,7 @@ public class Turret : MonoBehaviour
     public float shootingSpeed;
     float coolDown = 0f;
     bool alive = true;
+    [SerializeField] ShakePreset shootShake;
 
     [Header("Sounds")]
     [SerializeField] AudioClip[] shootSounds;
@@ -23,11 +27,12 @@ public class Turret : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        instance = this;
         shootingSpeed = initialShootingSpeed;
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         if (alive)
         {
@@ -101,11 +106,27 @@ public class Turret : MonoBehaviour
             projectile.transform.rotation = turret.transform.rotation;
             projectile.SetActive(true);
             SoundEffectsManager.instance.PlayRandomSoundEffect(shootSounds, turret.transform, 1f);
+            Shaker.instance.Shake(shootShake);
+            StartCoroutine(spawnBulletCase());
         }
 
         // Spawn Bullet Case
 
         
+    }
+
+    IEnumerator spawnBulletCase()
+    {
+        GameObject bulletCase = ObjectPool.instance.GetPooledObject(ObjectPool.PoolType.BULLETCASE);
+        if (bulletCase != null)
+        {
+            bulletCase.transform.position = turret.transform.position;
+            bulletCase.transform.rotation = turret.transform.rotation;
+            bulletCase.SetActive(true);
+            BulletCase bc = bulletCase.GetComponent<BulletCase>();
+            bc.SpawnCase();
+        } 
+        yield return 0;
     }
 
     void RenderLine()

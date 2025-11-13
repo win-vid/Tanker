@@ -573,7 +573,7 @@ MonoBehaviour:
   flockingRadius: 5
   wanderRadius: 25
   flockingRadiusSqr: 0
-  wrackPrefab: 8
+  wrackPrefab: 20
   shootSounds:
   - {fileID: 8300000, guid: d28b164b1251cdb489b99b370c372b35, type: 3}
   hitSounds:

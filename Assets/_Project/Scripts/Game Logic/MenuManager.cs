@@ -7,4 +7,9 @@ public class MenuManager : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Playground");
     }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }
