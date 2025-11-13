@@ -802,7 +802,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -0.84}
   m_LocalScale: {x: 1.9016, y: 0.39556998, z: 1.9016}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2478073082707945115}
   m_Father: {fileID: 5443119905383530926}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5140142309693090644
@@ -825,11 +826,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da0549f1a7b23ac47aac37b263b47be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AITurret
-  rotationSpeed: 0
+  rotationSpeed: 0.1
   shootSpeed: 4
+  _projectileSpawnPoint: {fileID: 2478073082707945115}
   projectile: 9
   followPlayer: 0
   shootAtPlayer: 1
+--- !u!1 &8960936153491346076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2478073082707945115}
+  m_Layer: 0
+  m_Name: ProjectileSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 2800000, guid: 2e8113252e9a1b245a81dc384ae86446, type: 3}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2478073082707945115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8960936153491346076}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.17, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7747435002201690378}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9005858646334488246
 GameObject:
   m_ObjectHideFlags: 0

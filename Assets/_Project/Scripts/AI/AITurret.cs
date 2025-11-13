@@ -17,7 +17,7 @@ public class AITurret : MonoBehaviour
 
         player = FindFirstObjectByType<PlayerStateMachine>();
         ai = GetComponentInParent<AIStateMachine>();
-        if (_projectileSpawnPoint = null) _projectileSpawnPoint = this.gameObject.transform;
+        if (_projectileSpawnPoint == null) _projectileSpawnPoint = this.gameObject.transform;
         currentShootTime = shootSpeed;
     }
 
@@ -70,8 +70,8 @@ public class AITurret : MonoBehaviour
         {
 
             Quaternion randomJitter = Quaternion.Euler(0, Random.Range(-ai.aimBias, ai.aimBias), 0);
-            projectile.transform.position = transform.position + transform.forward * 2f;
-            projectile.transform.rotation = transform.rotation * randomJitter;
+            projectile.transform.position = _projectileSpawnPoint.position + transform.forward;
+            projectile.transform.rotation = _projectileSpawnPoint.rotation * randomJitter;
             projectile.SetActive(true);
             SoundEffectsManager.instance.PlayRandomSoundEffect(ai.shootSounds, transform, 1f);
 
