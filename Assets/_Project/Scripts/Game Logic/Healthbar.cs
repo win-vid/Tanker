@@ -18,5 +18,7 @@ public class Healthbar : MonoBehaviour
         float newWidth = (this.health / maxHealth) * width;
 
         healthbar.sizeDelta = new Vector2(newWidth, height);
+
+        PlayerUIManager.instance.SetHealthText((int) health);
     }
 }

@@ -106,11 +106,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyRocket
   speed: 5
-  lifeTime: 5
+  lifeTime: 3.5
   currentLifeTime: 0
   damage: 20
   hurtPlayer: 1
   projectileColor: {r: 0, g: 0, b: 0, a: 0}
+  emissionIntesity: 0
   flyTime: 2
 --- !u!65 &2894219153584840183
 BoxCollider:

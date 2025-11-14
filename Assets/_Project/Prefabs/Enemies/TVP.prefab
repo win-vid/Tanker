@@ -52,7 +52,7 @@ MonoBehaviour:
   currentHealth: 0
   speed: 10
   rotationSpeed: 10
-  acceleration: 3
+  acceleration: 8
   deceleration: 0
   shootSpeed: 2
   aimBias: 30

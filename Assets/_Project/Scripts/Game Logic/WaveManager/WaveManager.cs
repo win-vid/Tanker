@@ -63,6 +63,7 @@ public class WaveManager : MonoBehaviour
         currentWave++;
         currentWavePoints = currentWave * wavePointIncrement;
         uiWaveManager.setCurrentWave(currentWave);
+        PlayerUIManager.instance.SetWaveText(currentWave);
         uiWaveManager.Display();
         
         // wait for display time

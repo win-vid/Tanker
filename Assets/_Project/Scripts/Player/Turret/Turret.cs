@@ -49,26 +49,26 @@ public class Turret : MonoBehaviour
 
     // Update the Cool Down Timer when the Turret has shot
     void UpdateCoolDown()
-{
-    if (coolDown > 0f)
     {
-        coolDown -= Time.deltaTime;
+        if (coolDown > 0f)
+        {
+            coolDown -= Time.deltaTime;
 
-        // Show loading effect if not active
-        if (!mouseLoadingEffect.gameObject.activeSelf)
-            mouseLoadingEffect.Show();
+            // Show loading effect if not active
+            if (!mouseLoadingEffect.gameObject.activeSelf)
+                mouseLoadingEffect.Show();
 
-        // Hide slightly before cooldown finishes (0.5s early)
-        if (coolDown <= 0.1f && mouseLoadingEffect.gameObject.activeSelf)
-            mouseLoadingEffect.Hide();
+            // Hide slightly before cooldown finishes (0.5s early)
+            if (coolDown <= 0.1f && mouseLoadingEffect.gameObject.activeSelf)
+                mouseLoadingEffect.Hide();
+        }
+        else
+        {
+            // Safety check: make sure it's hidden when done
+            if (mouseLoadingEffect.gameObject.activeSelf)
+                mouseLoadingEffect.Hide();
+        }
     }
-    else
-    {
-        // Safety check: make sure it's hidden when done
-        if (mouseLoadingEffect.gameObject.activeSelf)
-            mouseLoadingEffect.Hide();
-    }
-}
 
     // Rotate the turret to face the mouse position
     void RotateTurret()
@@ -86,7 +86,28 @@ public class Turret : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(heightCorrectedPoint - turret.transform.position);
             turret.transform.rotation = Quaternion.Slerp(turret.transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
+
+        /*
+        // FPS MODE
+
+        [SerializeField] float mouseSensitivity = 2f;
+        [SerializeField] float smoothTime = 0.05f;
+
+        float yaw;
+        float yawVelocity;
+
+        void RotateTurret()
+        {
+            Vector2 delta = Mouse.current.delta.ReadValue();
+            float mouseX = delta.x * mouseSensitivity;
+
+            yaw = Mathf.SmoothDamp(yaw, yaw + mouseX, ref yawVelocity, smoothTime);
+
+            turret.transform.rotation = Quaternion.Euler(0f, yaw, 0f);
+        }
+        */
     }
+
 
     void ReceiveInput()
     {

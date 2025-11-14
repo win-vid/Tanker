@@ -25,9 +25,11 @@ public class ScoreManager : MonoBehaviour
         UIScoreBoard.SetActive(false);
     }
 
+    // Adds points to score and updates the score in the players ui
     public void AddScore(int points)
     {
         _score += points;
+        PlayerUIManager.instance.SetScoreText(_score);
     }
 
     void compareScore()

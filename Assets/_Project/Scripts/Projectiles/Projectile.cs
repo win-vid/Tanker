@@ -10,18 +10,20 @@ using UnityEngine;
 public abstract class Projectile : MonoBehaviour
 {
     [SerializeField] protected float speed;
+    [Tooltip("Time the Projectile is alive.")]
     [SerializeField] protected float lifeTime;
     [HideInInspector] public float currentLifeTime;
     [SerializeField] public int damage;
     public bool hurtPlayer;
     protected Material projectileMaterial;
     [SerializeField] protected Color projectileColor;
+    [SerializeField] protected float emissionIntesity;
 
     void Awake()
     {
         currentLifeTime = lifeTime;
         this.projectileMaterial = GetComponent<Renderer>()!.material;
-        if (this.projectileMaterial != null) setMaterialColor(projectileColor);
+        if (this.projectileMaterial != null) setMaterialColor(projectileColor, emissionIntesity);
         onSpawn();
     }
 
@@ -53,13 +55,14 @@ public abstract class Projectile : MonoBehaviour
     }
 
     // sets the color of the projectile material to a given color
-    protected void setMaterialColor(Color color)
+    protected void setMaterialColor(Color color, float emissionIntesity)
     {
         if (this.projectileMaterial != null)
         {
             this.projectileMaterial.color = color;
-            this.projectileMaterial.SetColor("_EmissionColor", color);
+            this.projectileMaterial.SetColor("_EmissionColor", color * emissionIntesity);
 
+            this.projectileMaterial.EnableKeyword("_EMISSION");
         }
     }
 
@@ -74,6 +77,6 @@ public abstract class Projectile : MonoBehaviour
 
     protected virtual void ResetProjectile()
     {
-        // Override in subclasses if additional reset logic is needed
+        
     }
 }

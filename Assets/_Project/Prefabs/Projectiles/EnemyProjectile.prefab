@@ -132,6 +132,7 @@ MonoBehaviour:
   damage: 5
   hurtPlayer: 1
   projectileColor: {r: 1, g: 0, b: 0, a: 0}
+  emissionIntesity: 40
 --- !u!54 &3785624121663185154
 Rigidbody:
   m_ObjectHideFlags: 0
