@@ -157,9 +157,10 @@ MonoBehaviour:
   speed: 3
   lifeTime: 5
   currentLifeTime: 0
-  damage: 0
+  damage: 20
   hurtPlayer: 0
   projectileColor: {r: 0, g: 0, b: 0, a: 0}
+  emissionIntesity: 0
 --- !u!82 &5542008112800139613
 AudioSource:
   m_ObjectHideFlags: 0
