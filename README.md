@@ -33,4 +33,4 @@ Slow mini-boss, constantly aims its turret at the player and shoots disk project
 <h3>T4000</h3>
 Slow mini-boss, has no weapons but can deploy TVP's.
 <h3>TRX</h3>
-Every 10th wave the TRX will appear. It has a set of turrets and can shoot srockets at the player. Its the most powerful enemy but also the slowest.
+Every 10th wave the TRX will appear. It has a set of turrets and can shoot rockets at the player. Its the most powerful enemy but also the slowest.
