@@ -42,10 +42,7 @@ public class WaveManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        // Add score to Scoreboard
-        if (PlayerStateMachine.instance.isAlive) { if (Time.deltaTime % 1 == 0) ScoreManager.instance.AddScore(1); }
-        
+    { 
         // Start new wave if no more enemies spawned and the wave points are depleted
         if (enemiesSpawned <= 0 && currentWavePoints <= 0)
         {

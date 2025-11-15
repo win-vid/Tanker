@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class PowerUpGameManager : MonoBehaviour
 {
+    public static PowerUpGameManager instance; 
     [SerializeField] PowerUpManagerPrefab[] powerUpPrefab;
-    [SerializeField] float spawnInterval = 10f;
+    float spawnInterval = 10f;
 
     [System.Serializable]
     class PowerUpManagerPrefab
@@ -11,15 +12,23 @@ public class PowerUpGameManager : MonoBehaviour
         public ObjectPool.PoolType poolType;
     }
 
+    void Awake()
+    {
+        instance = this;
+    }
+
     void Update()
     {
+        /*
+        // Legacy System
         if (Time.time % spawnInterval < Time.deltaTime)
         {
             SpawnPowerUp();
         }
+        */
     }
 
-    Vector3 getRandomPosition()
+    Vector3 getRandomPosition() // Legacy
     {
         Vector3 position = Vector3.zero;
         Camera mainCamera = Camera.main;
@@ -37,7 +46,7 @@ public class PowerUpGameManager : MonoBehaviour
         return position;
     }
 
-    void SpawnPowerUp()
+    void SpawnPowerUp()     // Legacy
     {
         if (powerUpPrefab.Length == 0)
         {
@@ -52,6 +61,24 @@ public class PowerUpGameManager : MonoBehaviour
         GameObject powerUpInstance = ObjectPool.instance.GetPooledObject(selectedPowerUp.poolType);
         powerUpInstance.transform.position = spawnPosition;
         powerUpInstance.transform.rotation = Quaternion.identity;
+        powerUpInstance.SetActive(true);
+    }
+
+    // Refrenced by AIStateMAchine
+    public void DropRandomPowerUp(Vector3 position, Quaternion rotation)
+    {
+        if (powerUpPrefab.Length == 0)
+        {
+            Debug.LogWarning("No power-up prefabs assigned!");
+            return;
+        }
+
+        int randomIndex = Random.Range(0, powerUpPrefab.Length);
+        PowerUpManagerPrefab selectedPowerUp = powerUpPrefab[randomIndex];
+
+        GameObject powerUpInstance = ObjectPool.instance.GetPooledObject(selectedPowerUp.poolType);
+        powerUpInstance.transform.position = position;
+        powerUpInstance.transform.rotation = rotation;
         powerUpInstance.SetActive(true);
     }
 }

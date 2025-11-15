@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// TODO: Deprecate
+
 public class EnemyManager : MonoBehaviour
 {
     public static EnemyManager instance;

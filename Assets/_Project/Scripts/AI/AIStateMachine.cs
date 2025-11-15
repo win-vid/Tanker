@@ -18,6 +18,7 @@ public abstract class AIStateMachine : MonoBehaviour
     public float aimBias;           // aim randomness
     bool active = false;
     [SerializeField] int scoreValue;     // score value on death
+    [SerializeField, Range(0,100), Tooltip("Chance the AI drops a powerup. 0 = does not drop at all.")] int dropChance = 10;
 
     [Header("References")]
     [SerializeField] public ObjectPool.PoolType projectilePrefab;
@@ -121,8 +122,17 @@ public abstract class AIStateMachine : MonoBehaviour
         if (currentHealth <= 0 && this.gameObject.activeSelf)
         {
             currentHealth = health;
+            TryDropPowerup();
             RemoveFromGame();
         }
+    }
+
+    // Maybe drops a powerup
+    void TryDropPowerup()
+    {
+        int n = Random.Range(0,100);
+
+        if (n <= dropChance && n != 0) PowerUpGameManager.instance.DropRandomPowerUp(transform.position, Quaternion.identity);
     }
 
     public void setCurrentHealth(float health)
