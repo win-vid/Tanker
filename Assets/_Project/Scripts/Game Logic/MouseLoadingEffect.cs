@@ -6,6 +6,7 @@ public class MouseLoadingEffect : MonoBehaviour
     Vector3 mousePosition;
     [SerializeField] float distanceFromCamera;
     public ParticleSystem pp;
+    [SerializeField] Camera uiCam;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -19,7 +20,7 @@ public class MouseLoadingEffect : MonoBehaviour
         // Make it follow the mouse
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 10f; // distance from camera
-        transform.position = Camera.main.ScreenToWorldPoint(mousePos);
+        transform.position = uiCam.ScreenToWorldPoint(mousePos);
     }
 
     public void Show()

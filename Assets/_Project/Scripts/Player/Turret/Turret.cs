@@ -19,6 +19,12 @@ public class Turret : MonoBehaviour
     float coolDown = 0f;
     bool alive = true;
     [SerializeField] ShakePreset shootShake;
+    [SerializeField] float mouseSensitivity =  100f;
+    [SerializeField] float smoothTime = 0.05f;
+    private float yaw;
+    private float smoothedDelta;
+    private float smoothVelocity;
+    [SerializeField] ParticleSystem MuzzleFlash;
 
     [Header("Sounds")]
     [SerializeField] AudioClip[] shootSounds;
@@ -73,38 +79,49 @@ public class Turret : MonoBehaviour
     // Rotate the turret to face the mouse position
     void RotateTurret()
     {
-        Vector2 mousePos = Mouse.current.position.ReadValue();
+        if(GameFlowManager.instance.gameMode == GameMode.TOPDOWN){
+            Vector2 mousePos = Mouse.current.position.ReadValue();
 
-        Ray ray = Camera.main.ScreenPointToRay(mousePos);
-        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
-        float rayDistance;
+            Ray ray = Camera.main.ScreenPointToRay(mousePos);
+            Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+            float rayDistance;
 
-        if (groundPlane.Raycast(ray, out rayDistance))
-        {
-            Vector3 point = ray.GetPoint(rayDistance);
-            Vector3 heightCorrectedPoint = new Vector3(point.x, turret.transform.position.y, point.z);
-            Quaternion targetRotation = Quaternion.LookRotation(heightCorrectedPoint - turret.transform.position);
-            turret.transform.rotation = Quaternion.Slerp(turret.transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            if (groundPlane.Raycast(ray, out rayDistance))
+            {
+                Vector3 point = ray.GetPoint(rayDistance);
+                Vector3 heightCorrectedPoint = new Vector3(point.x, turret.transform.position.y, point.z);
+                Quaternion targetRotation = Quaternion.LookRotation(heightCorrectedPoint - turret.transform.position);
+                turret.transform.rotation = Quaternion.Slerp(turret.transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            }
         }
-
-        /*
-        // FPS MODE
-
-        [SerializeField] float mouseSensitivity = 2f;
-        [SerializeField] float smoothTime = 0.05f;
-
-        float yaw;
-        float yawVelocity;
-
-        void RotateTurret()
+        else
         {
-            Vector2 delta = Mouse.current.delta.ReadValue();
-            float mouseX = delta.x * mouseSensitivity;
+            // FPS MODE
 
-            yaw = Mathf.SmoothDamp(yaw, yaw + mouseX, ref yawVelocity, smoothTime);
+            Vector2 delta = Mouse.current.delta.ReadValue();
+            float rawMouseX = delta.x;
+
+            // smooth the raw mouse delta
+            smoothedDelta = Mathf.SmoothDamp(
+                smoothedDelta,
+                rawMouseX,
+                ref smoothVelocity,
+                smoothTime
+            );
+
+            // apply sensitivity HERE
+            float finalMouseX = smoothedDelta * mouseSensitivity;
+
+            // now rotate
+            yaw += finalMouseX;
 
             turret.transform.rotation = Quaternion.Euler(0f, yaw, 0f);
+
         }
+        
+
+        /*
+        
         */
     }
 
@@ -128,6 +145,7 @@ public class Turret : MonoBehaviour
             projectile.SetActive(true);
             SoundEffectsManager.instance.PlayRandomSoundEffect(shootSounds, turret.transform, 1f);
             Shaker.instance.Shake(shootShake);
+            MuzzleFlash?.Play();
             StartCoroutine(spawnBulletCase());
         }
 
