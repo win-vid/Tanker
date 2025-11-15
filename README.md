@@ -1,4 +1,4 @@
-<h1>Tanker</h1>
+<img width="1920" height="437" alt="TANKER" src="https://github.com/user-attachments/assets/a7a2b7ea-ea99-4ecf-b9d9-013b44f9a0b7" />
 In Tanker, the world lies in ruins, consumed by a ruthless, misanthropic super-intelligence. As the last human tank commander, you are humanity’s final line of defense — a lone steel titan waging war against endless legions of AI-driven machines. Every kill secures a heartbeat for humanity.
 
 <h2>About</h2>
