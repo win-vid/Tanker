@@ -32,3 +32,5 @@ Constantly aims its turret at the player. Persistently shoots at the player.
 Slow mini-boss, constantly aims its turret at the player and shoots disk projectiles which burst into multiple enemy projectiles after a short amount of time. Additionaly, possesses a small auto-canon at the front.
 <h3>T4000</h3>
 Slow mini-boss, has no weapons but can deploy TVP's.
+<h3>TRX</h3>
+Every 10th wave the TRX will appear. It has a set of turrets and can shoot srockets at the player. Its the most powerful enemy but also the slowest.
