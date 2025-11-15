@@ -405,7 +405,7 @@ MonoBehaviour:
   shootSpeed: 2.5
   aimBias: 30
   scoreValue: 10
-  dropChance: 10
+  dropChance: 25
   projectilePrefab: 0
   turret: {fileID: 0}
   player: {fileID: 0}

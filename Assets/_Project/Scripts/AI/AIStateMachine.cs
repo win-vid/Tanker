@@ -18,7 +18,7 @@ public abstract class AIStateMachine : MonoBehaviour
     public float aimBias;           // aim randomness
     bool active = false;
     [SerializeField] int scoreValue;     // score value on death
-    [SerializeField, Range(0,100), Tooltip("Chance the AI drops a powerup. 0 = does not drop at all.")] int dropChance = 10;
+    [SerializeField, Range(0,100), Tooltip("Chance the AI drops a powerup. 0 = does not drop at all.")] int dropChance = 25;
 
     [Header("References")]
     [SerializeField] public ObjectPool.PoolType projectilePrefab;

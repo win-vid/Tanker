@@ -30,7 +30,7 @@ public class Wander : BaseAIState
         Vector3 AIpos = stateMachine.transform.position;
         Vector3 pointOfInterest = playerPos + randomOffset;         // random offset around player
 
-        stateMachine.nav.SetDestination(pointOfInterest);
+        if (stateMachine.gameObject.activeInHierarchy) stateMachine.nav.SetDestination(pointOfInterest);
 
         /*
         // flee from player

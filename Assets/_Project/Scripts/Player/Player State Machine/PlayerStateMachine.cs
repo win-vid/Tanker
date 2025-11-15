@@ -98,7 +98,6 @@ public class PlayerStateMachine : MonoBehaviour
         {
             currentHealth -= other.GetComponent<Projectile>().damage;
             other.GetComponent<Projectile>().onImpact();
-            Debug.Log("Player hit, health: " + currentHealth);
             SoundEffectsManager.instance.PlayRandomSoundEffect(hitSounds, transform, 1f);
 
             // Update Healthbar

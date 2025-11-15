@@ -66,7 +66,6 @@ public class WaveManager : MonoBehaviour
         // wait for display time
         yield return new WaitForSeconds(uiWaveManager.getDisplayTime());
         
-        Debug.Log("Starting Wave: " + currentWave + " with " + currentWavePoints + " points.");
         enemiesSpawned = 0;
 
         // Boss Wave every 10 waves
@@ -82,7 +81,6 @@ public class WaveManager : MonoBehaviour
             Enemy enemy = GetRandomEnemy();
             spawnEnemy(enemy);
         }
-        Debug.Log("Wave Points Left: " + currentWavePoints);
     }
 
     // get a random position outside the camera view
