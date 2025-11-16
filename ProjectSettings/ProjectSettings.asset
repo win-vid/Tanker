@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: WinVid
-  productName: Tanker
+  productName: TANKER
   defaultCursor: {fileID: 2800000, guid: 52fce29f83c80cf43829240519a6ca9b, type: 3}
   cursorHotspot: {x: 16, y: 16}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}

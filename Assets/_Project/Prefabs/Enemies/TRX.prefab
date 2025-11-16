@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AITurret
   rotationSpeed: 3
-  shootSpeed: 1
+  shootSpeed: 2
   _projectileSpawnPoint: {fileID: 111839861634177563}
   projectile: 0
   followPlayer: 1
@@ -2234,7 +2234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AITurret
   rotationSpeed: 3
-  shootSpeed: 1
+  shootSpeed: 2
   _projectileSpawnPoint: {fileID: 5287059633701243281}
   projectile: 0
   followPlayer: 1
@@ -2307,6 +2307,7 @@ MonoBehaviour:
   shootSpeed: 5
   aimBias: 30
   scoreValue: 100
+  dropChance: 25
   projectilePrefab: 0
   turret: {fileID: 0}
   player: {fileID: 0}
