@@ -10,6 +10,8 @@ public class PauseMenu : MonoBehaviour
     // exit to menu if escape is pressed again
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.F9)) PlayerPrefs.DeleteAll();
+
         if (Input.GetKeyDown(KeyCode.Escape) && !isPaused) Pause();
         else if (Input.GetMouseButtonDown(0) && isPaused) Resume();
         else if (Input.GetKeyDown(KeyCode.Escape) && isPaused) ExitToMenu();
