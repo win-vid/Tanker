@@ -41,7 +41,6 @@ public class Shoot : BaseAIState
         if (shootTimer <= 0f)
         {
             {
-                // Fire projectile logic here
                 stateMachine.shootProjectile(stateMachine.projectilePrefab);
                 if (stateMachine is JagdPanzerManager panzer)
                 {
@@ -51,7 +50,4 @@ public class Shoot : BaseAIState
         }
         shootTimer -= Time.deltaTime;
     }
-    
-    // calls the Projectile from the object pool
-
 }

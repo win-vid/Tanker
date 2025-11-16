@@ -12,25 +12,28 @@ public class PlayerStateMachine : MonoBehaviour
     public static PlayerStateMachine instance;
 
     // Variables
-    public float speed = 10f;
+    [Header("Movement")]
+    public float speed = 10f;    
+    public float currentSpeed = 0f;
     public float reverseSpeed = 5f;
     public float rotationSpeed = 100f;
     public float acceleration = 5f;
     public float deceleration = 6f;
-    public bool isAlive = true;
 
+
+    [Header("Health")]    
     // Health
+    public bool isAlive = true;
     public int maxHealth = 100;
     [SerializeField] bool invincible = false;
     [SerializeField] Healthbar healthbar;
-
-    // Current State
-    public float currentSpeed = 0f;
-    public float inputVertical;            // W/S or Up/Down Arrow
-    public float inputHorizontal;          // A/D or Left/Right Arrow
     public int currentHealth;
 
+    [HideInInspector] public float inputVertical;            // W/S or Up/Down Arrow
+    [HideInInspector] public float inputHorizontal;          // A/D or Left/Right Arrow
 
+
+    [Header("Refrences")]
     // References
     public Turret turret;
     [SerializeField] GameObject shield;
@@ -38,9 +41,9 @@ public class PlayerStateMachine : MonoBehaviour
 
     // States
     BaseState currentState;
-    public IdleState idleState = new IdleState();
-    public MovementState movementState = new MovementState();
-    public DeadState deadState = new DeadState();
+    [HideInInspector] public IdleState idleState = new IdleState();
+    [HideInInspector] public MovementState movementState = new MovementState();
+    [HideInInspector] public DeadState deadState = new DeadState();
 
     // Physics
     Vector3 currentVelocity;
@@ -105,7 +108,6 @@ public class PlayerStateMachine : MonoBehaviour
             // Update Healthbar
             healthbar.setHealth(currentHealth);
             HealthLightIndicator.instance.checkColor();
-            // TODO: later add dead state here
         }
     }
 

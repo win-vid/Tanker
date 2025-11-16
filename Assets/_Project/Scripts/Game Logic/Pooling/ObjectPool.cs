@@ -79,6 +79,6 @@ public class ObjectPool : MonoBehaviour
             }
         }
         Debug.LogWarning("No inactive objects of type " + type + " available in pool.");
-        return null;
+        return null;                    // TODO: This is a possible break-point. If there are no more things to pool the pooler will return null.
     }
 }

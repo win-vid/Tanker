@@ -14203,6 +14203,7 @@ MonoBehaviour:
   mouseSensitivity: 2
   smoothTime: 0.05
   MuzzleFlash: {fileID: 1775321065}
+  _projectileSpawnPoint: {fileID: 1983789055}
   shootSounds:
   - {fileID: 8300000, guid: 7923b9ba7d7424c48a22443486022958, type: 3}
   - {fileID: 8300000, guid: 1bedff6125506c149941f312e2aacda1, type: 3}
@@ -14221,6 +14222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStateMachine
   speed: 10
+  currentSpeed: 0
   reverseSpeed: 5
   rotationSpeed: 100
   acceleration: 10
@@ -14229,10 +14231,9 @@ MonoBehaviour:
   maxHealth: 100
   invincible: 0
   healthbar: {fileID: 0}
-  currentSpeed: 0
+  currentHealth: 0
   inputVertical: 0
   inputHorizontal: 0
-  currentHealth: 0
   turret: {fileID: 934162464}
   shield: {fileID: 1981739064}
   rb: {fileID: 0}
@@ -17399,15 +17400,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7541750129371384559, guid: 4f5fc4bbd01b03a4499a6ed77f175fc7, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 7541750129371384559, guid: 4f5fc4bbd01b03a4499a6ed77f175fc7, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 7541750129371384559, guid: 4f5fc4bbd01b03a4499a6ed77f175fc7, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 7541750129371384559, guid: 4f5fc4bbd01b03a4499a6ed77f175fc7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17448,6 +17449,10 @@ PrefabInstance:
     - target: {fileID: 7541750129371384559, guid: 4f5fc4bbd01b03a4499a6ed77f175fc7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7541750129371384559, guid: 4f5fc4bbd01b03a4499a6ed77f175fc7, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8078720523478869859, guid: 4f5fc4bbd01b03a4499a6ed77f175fc7, type: 3}
       propertyPath: m_Name
@@ -19641,6 +19646,7 @@ Transform:
   - {fileID: 1013962150}
   - {fileID: 2086116318}
   - {fileID: 1775321063}
+  - {fileID: 1983789055}
   m_Father: {fileID: 142093428}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1423242262 stripped
@@ -24570,6 +24576,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5939696177293014782, guid: 523ffe33a07777e498de413cdbebd9a4, type: 3}
   m_PrefabInstance: {fileID: 116293132}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1983789054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1983789055}
+  m_Layer: 8
+  m_Name: PorjectileSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 2800000, guid: 2e8113252e9a1b245a81dc384ae86446, type: 3}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1983789055
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983789054}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.435, z: 3.127}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1420947333}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1983854607
 PrefabInstance:
   m_ObjectHideFlags: 0

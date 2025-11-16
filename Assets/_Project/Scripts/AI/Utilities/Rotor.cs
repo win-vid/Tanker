@@ -1,5 +1,10 @@
 using UnityEngine;
 
+/*
+*   Mainly used for rotating object.
+*   F.E. the rotors of the TVP drone.
+*/
+
 public class Rotor : MonoBehaviour
 {
     [SerializeField] float rotationSpeed = 1000f;

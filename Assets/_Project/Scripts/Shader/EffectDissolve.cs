@@ -1,5 +1,7 @@
 using UnityEngine;
 
+// Dissolves the dissolve Shader
+
 public class EffectDissolve : MonoBehaviour
 {
     [SerializeField] private Material dissolveMaterial;
@@ -23,7 +25,6 @@ public class EffectDissolve : MonoBehaviour
             if (dissolveAmount >= 1.0f)
             {
                 isDissolving = false;
-                // Optionally disable the object or perform other actions here
             }
         }
     }

@@ -25,6 +25,7 @@ public class Turret : MonoBehaviour
     private float smoothedDelta;
     private float smoothVelocity;
     [SerializeField] ParticleSystem MuzzleFlash;
+    [SerializeField] Transform _projectileSpawnPoint;
 
     [Header("Sounds")]
     [SerializeField] AudioClip[] shootSounds;
@@ -44,7 +45,6 @@ public class Turret : MonoBehaviour
         {
             RotateTurret();
             ReceiveInput();
-            RenderLine();
             UpdateCoolDown();
         }
         else
@@ -64,7 +64,7 @@ public class Turret : MonoBehaviour
             if (!mouseLoadingEffect.gameObject.activeSelf)
                 mouseLoadingEffect.Show();
 
-            // Hide slightly before cooldown finishes (0.5s early)
+            // Hide slightly before cooldown finishes
             if (coolDown <= 0.1f && mouseLoadingEffect.gameObject.activeSelf)
                 mouseLoadingEffect.Hide();
         }
@@ -96,12 +96,12 @@ public class Turret : MonoBehaviour
         }
         else
         {
-            // FPS MODE
+            // FPS MODE = UNFINISHED
+            // TODO: MAYBE FINISH IN THE FUTURE
 
             Vector2 delta = Mouse.current.delta.ReadValue();
             float rawMouseX = delta.x;
 
-            // smooth the raw mouse delta
             smoothedDelta = Mathf.SmoothDamp(
                 smoothedDelta,
                 rawMouseX,
@@ -109,20 +109,14 @@ public class Turret : MonoBehaviour
                 smoothTime
             );
 
-            // apply sensitivity HERE
             float finalMouseX = smoothedDelta * mouseSensitivity;
 
-            // now rotate
             yaw += finalMouseX;
 
             turret.transform.rotation = Quaternion.Euler(0f, yaw, 0f);
 
         }
         
-
-        /*
-        
-        */
     }
 
 
@@ -135,23 +129,20 @@ public class Turret : MonoBehaviour
         }
     }
 
+    // Shoots a projectile, shakes the screen and drops a bullet case
     void Shoot()
     {
         GameObject projectile = ObjectPool.instance.GetPooledObject(ObjectPool.PoolType.PlayerBullet);
         if (projectile != null)
         {
-            projectile.transform.position = turret.transform.position + turret.transform.forward * 2f;
-            projectile.transform.rotation = turret.transform.rotation;
+            projectile.transform.position = _projectileSpawnPoint.position;
+            projectile.transform.rotation = _projectileSpawnPoint.rotation;
             projectile.SetActive(true);
             SoundEffectsManager.instance.PlayRandomSoundEffect(shootSounds, turret.transform, 1f);
             Shaker.instance.Shake(shootShake);
             MuzzleFlash?.Play();
             StartCoroutine(spawnBulletCase());
         }
-
-        // Spawn Bullet Case
-
-        
     }
 
     IEnumerator spawnBulletCase()
@@ -166,11 +157,6 @@ public class Turret : MonoBehaviour
             bc.SpawnCase();
         } 
         yield return 0;
-    }
-
-    void RenderLine()
-    {
-        Debug.DrawRay(turret.transform.position, turret.transform.forward * 100f, Color.red);
     }
 
     public void setAlive(bool state)

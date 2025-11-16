@@ -1,5 +1,11 @@
 using UnityEngine;
 
+/*
+*   The Aim Assists represents a little "UI" Element. Its a little white circle that always points into the direction where the turret is shooting at.
+*   The script uses a line renderer to calculate the distance from the turret to the max distance of the aim assist.
+*   if an object with a collider box intercepts the line, the aim assist will relocate to the hit position.
+*/
+
 public class AimAssist : MonoBehaviour
 {
     [SerializeField] Transform aimBaseTransform;

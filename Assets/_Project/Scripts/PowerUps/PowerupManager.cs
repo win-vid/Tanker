@@ -31,7 +31,7 @@ public class PowerupManager : MonoBehaviour
                 break;
             case Powerup.EffectType.POWERSHOT:
                 // Implement PowerShot effect
-                turret.shootingSpeed /= effect.amount; // Example: double the shooting speed
+                turret.shootingSpeed /= effect.amount; 
                 Invoke("removePowerShot", effect.duration);
                 break;
             default:

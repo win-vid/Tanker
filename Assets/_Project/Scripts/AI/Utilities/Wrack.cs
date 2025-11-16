@@ -44,8 +44,6 @@ public class Wrack : MonoBehaviour
         }
     }
 
-
-
     public void popTurret()
     {
         // reset turret position and rotation
@@ -106,6 +104,4 @@ public class Wrack : MonoBehaviour
 
         setDissolveStrength(1f);
     }
-
-
 }

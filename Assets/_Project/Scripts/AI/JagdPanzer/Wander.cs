@@ -71,28 +71,5 @@ public class Wander : BaseAIState
             }
             else stateMachine.SwitchState(stateMachine.wanderState); // pick new point
         }
-
-        // draw line to point of interest for debugging
-        // Debug.DrawLine(stateMachine.transform.position, pointOfInterest, Color.green);
-    }
-
-    // TODO: This is a performance issue
-    // checks the EnemyManager for other enemies and calculates a seperation vector
-    Vector3 getSeperationVector(AIStateMachine stateMachine)
-    {
-        Vector3 seperation = Vector3.zero;
-        foreach (AIStateMachine other in EnemyManager.instance.enemies)
-        {
-            if (other == stateMachine || other == null) continue;
-            
-            Vector3 diff = stateMachine.transform.position - other.transform.position;
-            float distSqr = diff.sqrMagnitude;
-            
-            if (distSqr < stateMachine.flockingRadiusSqr)
-            {
-                seperation += diff.normalized;
-            }
-        }
-        return seperation.normalized;
     }
 }

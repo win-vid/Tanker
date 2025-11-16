@@ -32,7 +32,7 @@ public abstract class Powerup : MonoBehaviour
     public class Effect
     {
         public EffectType effectType;
-        public float duration;  // Duration in seconds, 0 for instant effects
+        public float duration;  // Duration in seconds
         public int amount;    // Amount for effects like HEAL
 
         public Effect(EffectType effectType, float duration)
@@ -109,11 +109,10 @@ public abstract class Powerup : MonoBehaviour
         symbolObject.transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
     }
     
+    // Not working
     protected void PulsePowerUp()
     {
-        /*
-        float scale = _initialScale.x + 0.1f * Mathf.Sin(Time.time * 5f);
+        float scale = _initialScale.x + 0.1f * Mathf.Sin(Time.time * 2f);
         symbolObject.transform.localScale = new Vector3(scale, scale, scale);
-        */
     }
 }

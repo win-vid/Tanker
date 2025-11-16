@@ -17,6 +17,5 @@ public class RotatingPowerup : Powerup
     protected override void onUpdate()
     {
         RotatePowerUp();
-        PulsePowerUp();
     }
 }

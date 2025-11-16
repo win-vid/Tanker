@@ -21,7 +21,6 @@ public class AITurret : MonoBehaviour
         currentShootTime = shootSpeed;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (followPlayer) RotateTurret();
@@ -37,7 +36,7 @@ public class AITurret : MonoBehaviour
         direction.y = 0f; // prevent tilting up/down
 
         if (direction.sqrMagnitude < 0.001f)
-            return; // prevent NaN rotation if too close
+            return; 
 
         // Calculate desired rotation
         Quaternion targetRotation = Quaternion.LookRotation(direction);

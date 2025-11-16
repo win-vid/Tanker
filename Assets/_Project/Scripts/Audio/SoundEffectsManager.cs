@@ -2,6 +2,11 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+/*
+*   The SoundFXManager is used to play audio clips in the scene.
+*   Could use some heavy refactoring though.
+*/
+
 public class SoundEffectsManager : MonoBehaviour
 {
     public static SoundEffectsManager instance;
