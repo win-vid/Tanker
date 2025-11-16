@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 0133b83d2f970db42aeef66aa736ef47
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182002
+  packageName: Voxbox - Voxel Game Assets
+  packageVersion: 1.0
+  assetPath: Assets/VoxBox/Prefabs/Birds/Owl.prefab
+  uploadId: 398045

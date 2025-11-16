@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 0dbccdaed6f9f2546809e13e90931fad
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182002
+  packageName: Voxbox - Voxel Game Assets
+  packageVersion: 1.0
+  assetPath: Assets/VoxBox/Prefabs/Weapons/Bow.prefab
+  uploadId: 398045

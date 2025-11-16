@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7e9232d1122d64b4e873b1598e17f5a6
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182002
+  packageName: Voxbox - Voxel Game Assets
+  packageVersion: 1.0
+  assetPath: Assets/VoxBox/Prefabs/Animals/Deer.prefab
+  uploadId: 398045

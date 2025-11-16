@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 194a56d3289aa7d4ba238bb744698d41
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 165604
+  packageName: MilkShake Camera Shaker
+  packageVersion: 1.0.0
+  assetPath: Assets/MilkShake/Demo/Materials/Charred.mat
+  uploadId: 360053

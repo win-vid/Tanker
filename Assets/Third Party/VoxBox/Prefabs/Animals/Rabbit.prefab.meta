@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7b2797b1da82c854dbd2d87af8204f9b
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182002
+  packageName: Voxbox - Voxel Game Assets
+  packageVersion: 1.0
+  assetPath: Assets/VoxBox/Prefabs/Animals/Rabbit.prefab
+  uploadId: 398045

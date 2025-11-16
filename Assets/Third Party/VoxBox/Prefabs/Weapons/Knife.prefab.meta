@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 9a956dc5fd9adc449a451f47670eef01
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182002
+  packageName: Voxbox - Voxel Game Assets
+  packageVersion: 1.0
+  assetPath: Assets/VoxBox/Prefabs/Weapons/Knife.prefab
+  uploadId: 398045

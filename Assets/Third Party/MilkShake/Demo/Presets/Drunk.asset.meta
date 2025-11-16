@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1ea2647b43095674bba86d2a9c1820b9
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 165604
+  packageName: MilkShake Camera Shaker
+  packageVersion: 1.0.0
+  assetPath: Assets/MilkShake/Demo/Presets/Drunk.asset
+  uploadId: 360053

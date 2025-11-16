@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 6d2a0e9b8c44a8f4ba6b68ca9e8d3a89
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182002
+  packageName: Voxbox - Voxel Game Assets
+  packageVersion: 1.0
+  assetPath: Assets/VoxBox/Prefabs/Animals/Lion.prefab
+  uploadId: 398045

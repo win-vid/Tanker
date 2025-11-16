@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 3ba3079b5d96981488fa97ec1f88c032
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182002
+  packageName: Voxbox - Voxel Game Assets
+  packageVersion: 1.0
+  assetPath: Assets/VoxBox/Prefabs/Animals/Dog.prefab
+  uploadId: 398045

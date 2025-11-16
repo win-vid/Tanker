@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 20448f50d45eeda408a97e8eb78a6d47
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182002
+  packageName: Voxbox - Voxel Game Assets
+  packageVersion: 1.0
+  assetPath: Assets/VoxBox/Prefabs/Animals/Bear.prefab
+  uploadId: 398045

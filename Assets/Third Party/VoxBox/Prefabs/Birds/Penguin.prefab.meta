@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 27886274f6ee5ae478702af711008699
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182002
+  packageName: Voxbox - Voxel Game Assets
+  packageVersion: 1.0
+  assetPath: Assets/VoxBox/Prefabs/Birds/Penguin.prefab
+  uploadId: 398045

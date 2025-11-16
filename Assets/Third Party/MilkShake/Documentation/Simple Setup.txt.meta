@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 58c08a40c80a59a46a7cfcc1a7978bbb
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 165604
+  packageName: MilkShake Camera Shaker
+  packageVersion: 1.0.0
+  assetPath: Assets/MilkShake/Documentation/Simple Setup.txt
+  uploadId: 360053
