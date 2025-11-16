@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
@@ -97,6 +98,7 @@ public class PlayerStateMachine : MonoBehaviour
         if (other.CompareTag("EnemyProjectile") && !invincible)
         {
             currentHealth -= other.GetComponent<Projectile>().damage;
+            currentHealth = Mathf.Clamp(currentHealth, 0, 100);
             other.GetComponent<Projectile>().onImpact();
             SoundEffectsManager.instance.PlayRandomSoundEffect(hitSounds, transform, 1f);
 

@@ -113,7 +113,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -373,7 +373,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -392,7 +392,7 @@ PrefabInstance:
     - target: {fileID: 3137956734495803709, guid: d79fd4d6c3794bc4c89ac1cfcc071929, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: 7075b8ab060a4e54699dd985a8e8a256, type: 2}
+      objectReference: {fileID: 2100000, guid: 6d0d3cb0e1ea09c4f81ccce9e42cc9da, type: 2}
     - target: {fileID: 3577030873591383369, guid: d79fd4d6c3794bc4c89ac1cfcc071929, type: 3}
       propertyPath: m_Name
       value: Gun07
