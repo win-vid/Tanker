@@ -8,10 +8,10 @@ This project is part of my introduction to Game Engines course.
 <h2>How to play</h2>
 <h3>Movement</h3>
 <ul>
-  <li>W, Accelerate</li>
-  <li>S, Drive Backwards</li>
-  <li>A, Turn Left</li>
-  <li>D, Turn Right</li>
+  <li>W, Arrow-Up : Accelerate</li>
+  <li>S, Arrow-Down : Drive Backwards</li>
+  <li>A, Arrow-Left : Turn Left</li>
+  <li>D, Arrow-Right : Turn Right</li>
 </ul>
 
 <h3>Shooting</h3>
