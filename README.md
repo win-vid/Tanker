@@ -34,7 +34,7 @@ Slow mini-boss, constantly aims its turret at the player and shoots disk project
 Slow mini-boss, has no weapons but can deploy TVP's.
 <h3>TRX</h3>
 Every 10th wave the TRX will appear. It has a set of turrets and can shoot rockets at the player. Its the most powerful enemy but also the slowest.
-
+<hr>
 <h3>Assets used</h3>
 Voxel tank constructor by GOW4: https://sketchfab.com/3d-models/voxel-tank-constructor-c544436b89ea465e8bfb78dbdde16179 
 https://creativecommons.org/licenses/by/4.0/
